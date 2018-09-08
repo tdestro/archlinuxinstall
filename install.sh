@@ -8,3 +8,5 @@ mkswap /dev/nvme0n1p5
 swapon /dev/nvme0n1p5
 mkfs.f2fs /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
+mkdir /mnt/boot
+mount /dev/nvme0n1p4 /mnt/boot
