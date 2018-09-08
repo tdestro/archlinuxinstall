@@ -20,7 +20,6 @@ faenza-icon-theme numix-themes-archblue \
 libgtop networkmanager \
 git go \
 nvidia \
-aic94xx wd719x \
 ttf-dejavu
 genfstab -U /mnt > /mnt/etc/fstab
 
