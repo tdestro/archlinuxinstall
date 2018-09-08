@@ -10,8 +10,8 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base base-devel efibootmgr dosfstools os-prober mtools f2fs-tools
-genfstab -U /mnt >> /mnt/etc/fstab
+pacstrap /mnt base base-devel grub efibootmgr dosfstools os-prober mtools f2fs-tools 
+genfstab -U /mnt > /mnt/etc/fstab
 
 ###############################
 #### Configure base system ####
@@ -37,4 +37,5 @@ echo "root:baloney1" | chpasswd
 mkdir /boot/EFI
 mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
 EOF
