@@ -11,11 +11,12 @@ mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base base-devel grub efibootmgr dosfstools os-prober mtools f2fs-tools bash-completion \
-xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xorg-twm xterm xorg-xclock xf86-input-synaptics cinnamon nemo-fileroller gdm \
-pulseaudio pulseaudio-alsa pavucontrol gnome-terminal firefox flashplugin vlc chromium unzip unrar p7zip pidgin skype deluge smplayer audacious qmmp gimp xfburn thunderbird gedit gnome-system-monitor \
-a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins \
-yaourt \
-Faenza-icon-theme numix-themes \
+xorg-server xorg-xinit xorg-apps mesa xorg-twm xterm xorg-xclock xf86-input-synaptics cinnamon nemo-fileroller gdm \
+pulseaudio pulseaudio-alsa pavucontrol gnome-terminal firefox flashplugin vlc chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn thunderbird gedit gnome-system-monitor \
+a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
+gst-plugins-good \
+gst-plugins-ugly \
+faenza-icon-theme numix-themes-archblue \
 libgtop networkmanager \
 git go \
 nvidia
