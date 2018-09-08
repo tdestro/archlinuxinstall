@@ -1,1 +1,1 @@
-bash <(curl -s http://mywebsite.com/myscript.txt)
+bash <(curl -s https://raw.githubusercontent.com/tdestro/archlinuxinstall/master/install.sh)
