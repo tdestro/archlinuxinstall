@@ -47,9 +47,6 @@ echo "Installing wifi packages"
 pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
-git clone https://aur.archlinux.org/aic94xx-firmware.git
-cd aic94xx-firmware
-makepkg -sri
 mkinitcpio -p linux
 echo "Setting root password"
 echo "root:baloney1" | chpasswd
