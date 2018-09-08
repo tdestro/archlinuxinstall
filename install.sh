@@ -10,7 +10,7 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel efibootmgr dosfstools os-prober mtools f2fs-tools
 genfstab -U /mnt >> /mnt/etc/fstab
 
 ###############################
@@ -34,4 +34,7 @@ sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block encrypt lvm2 filesy
 mkinitcpio -p linux
 echo "Setting root password"
 echo "root:baloney1" | chpasswd
+mkdir /boot/EFI
+mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 EOF
