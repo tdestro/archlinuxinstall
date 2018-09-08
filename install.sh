@@ -20,7 +20,8 @@ faenza-icon-theme numix-themes-archblue \
 libgtop networkmanager \
 git go \
 nvidia \
-ttf-dejavu
+ttf-dejavu \
+freetype2
 genfstab -U /mnt > /mnt/etc/fstab
 
 ###############################
@@ -51,6 +52,7 @@ echo "Setting root password"
 echo "root:baloney1" | chpasswd
 mkdir /boot/EFI
 mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
+rm /boot/grub/grub.cfg
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/TTF/DejaVuSansMono.ttf
