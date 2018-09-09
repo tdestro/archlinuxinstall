@@ -19,6 +19,7 @@ chromium firefox gedit xfce4-terminal \
 git \
 go \
 jdk8-openjdk \
+eclipse-cpp
 
 
 #filezilla libreoffice-fresh \
@@ -50,6 +51,7 @@ arch-chroot /mnt /bin/bash <<EOF
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+yay -S phpstorm clion datagrip goland rider
 sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
 sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
