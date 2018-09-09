@@ -50,8 +50,8 @@ pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
-#echo "Setting root password"
-#echo "root:baloney1" | chpasswd
+echo "Setting root password"
+echo "root:baloney1" | chpasswd
 useradd --create-home --groups wheel --shell /bin/bash tdestro
 passwd tdestro
 mkdir /boot/EFI
