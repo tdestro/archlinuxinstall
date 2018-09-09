@@ -149,7 +149,7 @@ systemctl enable dhcpcd
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
-sudo -u tdestro makepkg -si
+su tdestro -c 'makepkg -si' 
 rm -rf /yay
 yay -S phpstorm jetbrains-toolbox
 
