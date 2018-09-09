@@ -6,3 +6,4 @@ git config --global user.email "tony.destro@gmail.com"
 git config --global user.name "Tony Destro"
 sed -i 's/#[multilib]/[multilib]/' /etc/pacman.conf
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+pacman -Sy
