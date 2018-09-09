@@ -11,8 +11,7 @@ pacstrap /mnt base base-devel grub efibootmgr dosfstools os-prober mtools termin
 xorg-server xorg-xinit xorg-apps mesa nvidia \
 xorg-twm xterm xorg-xclock \
 xf86-input-synaptics \
-cinnamon nemo-fileroller \ 
-lightdm lightdm-gtk-greeter \
+cinnamon nemo-fileroller \
 firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
 pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn thunderbirdgnome-system-monitor \
 a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
