@@ -75,4 +75,5 @@ grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/
 echo "GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2" >> /etc/default/grub 
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable lightdm.service
+systemctl enable dhcpcd
 EOF
