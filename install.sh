@@ -65,8 +65,8 @@ sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt
 mkinitcpio -p linux
 echo "Setting root password"
 echo "root:baloney1" | chpasswd
-useradd --create-home --groups wheel --shell /bin/bash tdestro
-passwd tdestro
+#useradd --create-home --groups wheel --shell /bin/bash tdestro
+#passwd tdestro
 mkdir /boot/EFI
 mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
 rm /boot/grub/grub.cfg
