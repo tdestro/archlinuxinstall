@@ -7,8 +7,26 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base base-devel \
-intel-ucode zsh openssh git bash-completion reflector python
+pacstrap /mnt base base-devel
+
+genfstab -U /mnt > /mnt/etc/fstab
+rm /mnt/etc/fstab && genfstab -U -p /mnt >> /mnt/etc/fstab
+cp ./local.conf /mnt/etc/fonts/local.conf
+ 
+###############################
+#### Configure base system ####
+###############################
+arch-chroot /mnt /bin/bash <<EOF
+
+# University of Pittsburgh Mirror. 
+echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+# Terminal fonts that make sense on this machine.
+{
+    echo FONT=ter-132n
+    echo FONT_MAP=8859-2
+} > /etc/vconsole.conf
+
+pacman -Sy --needed intel-ucode zsh openssh git bash-completion reflector python
 grub efibootmgr os-prober mtools \
 terminus-font ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
@@ -31,8 +49,7 @@ atom \
 transmission-gtk \
 docker
 gimp \
-google-cloud-sdk \ 
-
+google-cloud-sdk
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
 # grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
@@ -50,22 +67,6 @@ google-cloud-sdk \
 # git go \
 # ttf-dejavu \
 #freetype2
-
-genfstab -U /mnt > /mnt/etc/fstab
-rm /mnt/etc/fstab && genfstab -U -p /mnt >> /mnt/etc/fstab
-cp ./local.conf /mnt/etc/fonts/local.conf
- 
-###############################
-#### Configure base system ####
-###############################
-arch-chroot /mnt /bin/bash <<EOF
-
-echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
-{
-    echo FONT=ter-132n
-    echo FONT_MAP=8859-2
-} > /etc/vconsole.conf
-
 
 # Setting and generating locale
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
