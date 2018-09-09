@@ -7,7 +7,8 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base base-devel grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
+pacstrap /mnt base base-devel \
+grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
 xorg-server xorg-xinit xorg-apps mesa nvidia \
 xorg-twm xterm xorg-xclock \
 xf86-input-synaptics \
@@ -39,7 +40,7 @@ locale-gen
 export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "Setting time zone"
-ln -s /usr/share/zoneinfo/EST /etc/localtime
+ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc --utc
 echo "Setting hostname"
 echo "precision5530" > /etc/hostname
