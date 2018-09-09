@@ -15,7 +15,10 @@ xorg-server xorg-xinit xorg-apps \
 xf86-input-synaptics \
 lightdm lightdm-gtk-greeter \
 cinnamon \
-firefox gedit xfce4-terminal
+firefox gedit xfce4-terminal \
+
+git
+
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
 # grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
@@ -74,6 +77,39 @@ grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/TTF/DejaVuSansMono.ttf
 echo "GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2" >> /etc/default/grub 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+# fonts 
+ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+
+#Enable FreeType subpixel hinting mode
+/etc/profile.d/freetype2.sh
+
+export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+
+{
+<?xml version=\"1.0\"?>
+  <!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">
+  <fontconfig>
+      <match>
+          <edit mode=\"prepend\" name=\"family\"><string>Noto Sans</string></edit>
+      </match>
+      <match target=\"pattern\">
+          <test qual=\"any\" name=\"family\"><string>serif</string></test>
+          <edit name=\"family\" mode=\"assign\" binding=\"same\"><string>Noto Serif</string></edit>
+      </match>
+      <match target=\"pattern\">
+          <test qual=\"any\" name=\"family\"><string>sans-serif</string></test>
+          <edit name=\"family\" mode=\"assign\" binding="same"><string>Noto Sans</string></edit>
+      </match>
+      <match target=\"pattern\">
+          <test qual=\"any\" name=\"family\"><string>monospace</string></test>
+          <edit name=\"family\" mode=\"assign\" binding=\"same\"><string>Noto Mono</string></edit>
+      </match>
+  </fontconfig>
+} > /etc/fonts/local.conf
+
 systemctl enable lightdm.service
 systemctl enable dhcpcd
 EOF
