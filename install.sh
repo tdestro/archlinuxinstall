@@ -8,7 +8,7 @@ mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base base-devel \
-grub efibootmgr dosfstools os-prober mtools f2fs-tools \
+grub efibootmgr dosfstools os-prober mtools f2fs-tools intel-ucode \
 terminus-font ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps \
@@ -71,8 +71,6 @@ sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt
 mkinitcpio -p linux
 echo "Setting root password"
 echo "root:baloney1" | chpasswd
-#useradd --create-home --groups wheel --shell /bin/bash tdestro
-#passwd tdestro
 mkdir /boot/EFI
 mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
 rm /boot/grub/grub.cfg
@@ -112,6 +110,22 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
       </match>
   </fontconfig>
 } > /etc/fonts/local.conf
+
+useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
+echo "tdestro:baloney1" | chpasswd
+sed -i '/^# %wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
+echo "" >> /etc/sudoers
+echo 'Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
+echo 'Defaults visiblepw, path_info, insults, lecture=always' >> /etc/sudoers
+echo 'Defaults loglinelen=0, logfile =/var/log/sudo.log, log_year, log_host, syslog=auth' >> /etc/sudoers
+echo 'Defaults passwd_tries=3, passwd_timeout=1' >> /etc/sudoers
+echo 'Defaults env_reset, always_set_home, set_home, set_logname' >> /etc/sudoers
+echo 'Defaults !env_editor, editor="/usr/bin/vim:/usr/bin/vi:/usr/bin/nano"' >> /etc/sudoers
+echo 'Defaults timestamp_timeout=15' >> /etc/sudoers
+echo 'Defaults passprompt="[sudo] password for %u: "' >> /etc/sudoers
+echo 'Defaults lecture=never' >> /etc/sudoers
+git config --global user.name "Tony Destro" && git config --global user.email "tony.destro@gmail.com"
+git config --global credential.helper cache store
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
