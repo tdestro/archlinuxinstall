@@ -16,7 +16,7 @@ pulseaudio pulseaudio-alsa pavucontrol gnome-terminal firefox flashplugin vlc ch
 a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
 gst-plugins-good \
 gst-plugins-ugly \
-faenza-icon-theme numix-themes-archblue \
+faenza-icon-theme \
 libgtop networkmanager \
 git go \
 nvidia \
