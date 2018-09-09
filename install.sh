@@ -16,7 +16,6 @@ xf86-input-synaptics \
 lightdm lightdm-gtk-greeter \
 cinnamon \
 firefox gedit xfce4-terminal \
-
 git
 
 #filezilla libreoffice-fresh \
@@ -45,6 +44,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
+sed -i 's/#[multilib]/[multilib]/' /etc/pacman.conf
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 {
     echo FONT=ter-132n
