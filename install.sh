@@ -41,10 +41,10 @@ eclipse-cpp
 # ttf-dejavu \
 #freetype2
 
-
-
 genfstab -U /mnt > /mnt/etc/fstab
 
+cp ./local.conf /mnt/etc/fonts/local.conf
+ 
 ###############################
 #### Configure base system ####
 ###############################
@@ -91,28 +91,6 @@ ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 /etc/profile.d/freetype2.sh
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
-
-{
-<?xml version=\"1.0\"?>
-<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">
-<fontconfig>
-      <match>
-          <edit mode=\"prepend\" name=\"family\"><string>Noto Sans</string></edit>
-      </match>
-      <match target=\"pattern\">
-          <test qual=\"any\" name=\"family\"><string>serif</string></test>
-          <edit name=\"family\" mode=\"assign\" binding=\"same\"><string>Noto Serif</string></edit>
-      </match>
-      <match target=\"pattern\">
-          <test qual=\"any\" name=\"family\"><string>sans-serif</string></test>
-          <edit name=\"family\" mode=\"assign\" binding="same"><string>Noto Sans</string></edit>
-      </match>
-      <match target=\"pattern\">
-          <test qual=\"any\" name=\"family\"><string>monospace</string></test>
-          <edit name=\"family\" mode=\"assign\" binding=\"same\"><string>Noto Mono</string></edit>
-      </match>
-  </fontconfig>
-} > /etc/fonts/local.conf
 
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
