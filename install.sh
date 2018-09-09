@@ -30,8 +30,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt /bin/bash <<EOF
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 {
-    echo KEYMAP=pl2
-    echo FONT=Lat2-Terminus16
+    echo FONT=ter-132n
     echo FONT_MAP=8859-2
 } > /etc/vconsole.conf
 echo "Setting and generating locale"
