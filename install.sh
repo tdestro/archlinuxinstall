@@ -13,7 +13,7 @@ xorg-twm xterm xorg-xclock \
 xf86-input-synaptics \
 cinnamon nemo-fileroller \
 firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
-pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn thunderbirdgnome-system-monitor \
+pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn gnome-system-monitor \
 a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
 gst-plugins-good \
 gst-plugins-ugly \
@@ -54,8 +54,7 @@ mkdir /boot/EFI
 mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
 rm /boot/grub/grub.cfg
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
 grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/TTF/DejaVuSansMono.ttf
 echo "GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2" >> /etc/default/grub 
-update-grub
+grub-mkconfig -o /boot/grub/grub.cfg
 EOF
