@@ -114,7 +114,7 @@ systemctl enable dhcpcd
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+sudo -u tdestro makepkg -si
 rm -rf /yay
 yay -S phpstorm clion datagrip goland rider
 
