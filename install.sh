@@ -8,21 +8,34 @@ mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base base-devel \
-grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
-xorg-server xorg-xinit xorg-apps mesa nvidia \
-xorg-twm xterm xorg-xclock \
+grub efibootmgr dosfstools os-prober mtools f2fs-tools \
+terminus-font ttf-dejavu ttf-liberation noto-fonts \
+xf86-video-intel mesa-libgl libva-intel-driver libva \
+xorg-server xorg-xinit xorg-apps \
 xf86-input-synaptics \
-cinnamon nemo-fileroller \
-firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
-pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn gnome-system-monitor \
-a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
-gst-plugins-good \
-gst-plugins-ugly \
-faenza-icon-theme \
-libgtop networkmanager \
-git go \
-ttf-dejavu \
-freetype2
+lightdm lightdm-gtk-greeter \
+cinnamon \
+firefox gedit xfce4-terminal
+#filezilla libreoffice-fresh \
+#ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
+# grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
+# xorg-server xorg-xinit xorg-apps mesa nvidia \
+# xorg-twm xterm xorg-xclock \
+# xf86-input-synaptics \
+# cinnamon nemo-fileroller \
+#firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
+# pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn gnome-system-monitor \
+# a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
+# gst-plugins-good \
+# gst-plugins-ugly \
+# faenza-icon-theme \
+# libgtop networkmanager \
+# git go \
+# ttf-dejavu \
+#freetype2
+
+
+
 genfstab -U /mnt > /mnt/etc/fstab
 
 ###############################
@@ -61,4 +74,5 @@ grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/TTF/DejaVuSansMono.ttf
 echo "GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2" >> /etc/default/grub 
 grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable lightdm.service
 EOF
