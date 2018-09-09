@@ -28,6 +28,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
+echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 {
     echo KEYMAP=pl2
     echo FONT=Lat2-Terminus16
