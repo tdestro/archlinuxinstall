@@ -15,6 +15,7 @@ xorg-server xorg-xinit xorg-apps \
 xf86-input-synaptics \
 lightdm lightdm-gtk-greeter \
 cinnamon \
+freetype2 \
 chromium firefox gedit xfce4-terminal \
 git \
 go \
@@ -97,8 +98,8 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
 {
 <?xml version=\"1.0\"?>
-  <!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">
-  <fontconfig>
+<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">
+<fontconfig>
       <match>
           <edit mode=\"prepend\" name=\"family\"><string>Noto Sans</string></edit>
       </match>
