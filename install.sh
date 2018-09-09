@@ -8,20 +8,30 @@ mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base base-devel \
-grub efibootmgr dosfstools os-prober mtools f2fs-tools intel-ucode \
+intel-ucode zsh openssh git bash-completion reflector python
+grub efibootmgr os-prober mtools \
 terminus-font ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps \
+xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
 xf86-input-synaptics \
 lightdm lightdm-gtk-greeter \
 cinnamon \
 freetype2 \
+zip unzip unrar p7zip lzop cpio zziplib \
+alsa-utils alsa-plugins \
+pulseaudio pulseaudio-alsa \
+ntfs-3g dosfstools exfat-utils f2fs-tools fuse fuse-exfat autofs mtpfs \
 chromium firefox gedit xfce4-terminal \
-git \
 go \
 jdk8-openjdk \
-eclipse-cpp
-
+eclipse-cpp \
+meld \
+atom \
+transmission-gtk \
+docker
+gimp \
+google-cloud-sdk \ 
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
@@ -42,31 +52,52 @@ eclipse-cpp
 #freetype2
 
 genfstab -U /mnt > /mnt/etc/fstab
-
+rm /mnt/etc/fstab && genfstab -U -p /mnt >> /mnt/etc/fstab
 cp ./local.conf /mnt/etc/fonts/local.conf
  
 ###############################
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
-sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
-sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
+
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 {
     echo FONT=ter-132n
     echo FONT_MAP=8859-2
 } > /etc/vconsole.conf
-echo "Setting and generating locale"
+
+
+# Setting and generating locale
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen
 export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-echo "Setting time zone"
+
+# Configure timezone
 ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+
+# Configure systemd-timesyncd
+sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
+sed -i -e 's/^#FallbackNTP=.*/FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.pool.ntp.org/' /etc/systemd/timesyncd.conf
+systemctl enable systemd-timesyncd.service
+timedatectl set-ntp true
+
+# Configure hardware clock.
 hwclock --systohc --utc
-echo "Setting hostname"
-echo "precision5530" > /etc/hostname
-sed -i "/localhost/s/$/ precision5530/" /etc/hosts
+
+# Set hostname.
+echo precision5530 > /etc/hostname
+
+# Configure hosts
+echo "" >> /etc/hosts
+echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+
+# CONFIGURE MULTILIB
+sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
+sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
+
 echo "Installing wifi packages"
 pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
 echo "Generating initramfs"
@@ -93,8 +124,11 @@ chmod +x /etc/profile.d/freetype2.sh
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
+# ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
+
+# CONFIGURE SUDOERS
 sed -i '/^# %wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
 echo "" >> /etc/sudoers
 echo 'Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
@@ -116,6 +150,6 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 sudo -u tdestro makepkg -si
 rm -rf /yay
-yay -S phpstorm clion datagrip goland rider
+yay -S phpstorm jetbrains-toolbox
 
 EOF
