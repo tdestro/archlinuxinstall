@@ -49,10 +49,6 @@ genfstab -U /mnt > /mnt/etc/fstab
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-yay -S phpstorm clion datagrip goland rider
 sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
 sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
@@ -136,4 +132,10 @@ git config --global credential.helper cache store
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+yay -S phpstorm clion datagrip goland rider
+
 EOF
