@@ -146,7 +146,9 @@ git config --global credential.helper cache store
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
-su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -si; rm -rf ~/yay' 
+su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -s' 
+pacman -S yay
+rm -rf ~/yay 
 yay -S jetbrains-toolbox
 
 EOF
