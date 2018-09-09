@@ -41,6 +41,7 @@ export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "Setting time zone"
 ln -s /usr/share/zoneinfo/EST /etc/localtime
+hwclock --systohc --utc
 echo "Setting hostname"
 echo "precision5530" > /etc/hostname
 sed -i "/localhost/s/$/ precision5530/" /etc/hosts
