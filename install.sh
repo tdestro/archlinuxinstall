@@ -88,6 +88,7 @@ ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 
 #Enable FreeType subpixel hinting mode
+chmod +x /etc/profile.d/freetype2.sh
 /etc/profile.d/freetype2.sh
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
@@ -114,6 +115,7 @@ systemctl enable dhcpcd
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+rm -rf /yay
 yay -S phpstorm clion datagrip goland rider
 
 EOF
