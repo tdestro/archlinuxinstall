@@ -17,8 +17,9 @@ lightdm lightdm-gtk-greeter \
 cinnamon \
 chromium firefox gedit xfce4-terminal \
 git \
+go \
 jdk8-openjdk \
-aurman \
+
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
@@ -46,6 +47,9 @@ genfstab -U /mnt > /mnt/etc/fstab
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
 sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
