@@ -65,10 +65,10 @@ cp ./local.conf /mnt/etc/fonts/local.conf
 #freetype2
 
 # Terminal fonts that make sense on this machine.
-{
-    echo FONT=ter-132n
-    echo FONT_MAP=8859-2
-} > /etc/vconsole.conf
+#{
+#    echo FONT=ter-132n
+#    echo FONT_MAP=8859-2
+#} > /etc/vconsole.conf
 
 
-EOF
+#EOF
