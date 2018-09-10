@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Tony\'s Arch Linux Installer Script.
-mkfs.ext4 -f /dev/nvme0n1p4
+mkfs.ext4 -F /dev/nvme0n1p4
 mkswap /dev/nvme0n1p5
 swapon /dev/nvme0n1p5
 mkfs.f2fs -f /dev/nvme0n1p6
