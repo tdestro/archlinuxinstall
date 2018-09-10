@@ -7,7 +7,7 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base base-devel
+pacstrap --needed /mnt base base-devel
 
 genfstab -U /mnt > /mnt/etc/fstab
 rm /mnt/etc/fstab && genfstab -U -p /mnt >> /mnt/etc/fstab
