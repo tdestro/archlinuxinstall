@@ -7,7 +7,7 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap --needed /mnt base base-devel
+pacstrap /mnt base
 
 genfstab -U /mnt > /mnt/etc/fstab
 rm /mnt/etc/fstab && genfstab -U -p /mnt >> /mnt/etc/fstab
@@ -21,7 +21,8 @@ arch-chroot /mnt /bin/bash <<EOF
 # University of Pittsburgh Mirror. 
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
-pacman -Sy --needed intel-ucode zsh openssh git bash-completion reflector python
+pacman -Sy --needed base-devel \
+intel-ucode zsh openssh git bash-completion reflector python
 grub efibootmgr os-prober mtools \
 terminus-font ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
@@ -68,5 +69,6 @@ gimp
     echo FONT=ter-132n
     echo FONT_MAP=8859-2
 } > /etc/vconsole.conf
+
 
 EOF
