@@ -20,11 +20,6 @@ arch-chroot /mnt /bin/bash <<EOF
 
 # University of Pittsburgh Mirror. 
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
-# Terminal fonts that make sense on this machine.
-{
-    echo FONT=ter-132n
-    echo FONT_MAP=8859-2
-} > /etc/vconsole.conf
 
 pacman -Sy --needed intel-ucode zsh openssh git bash-completion reflector python
 grub efibootmgr os-prober mtools \
@@ -67,6 +62,12 @@ google-cloud-sdk
 # git go \
 # ttf-dejavu \
 #freetype2
+
+# Terminal fonts that make sense on this machine.
+{
+    echo FONT=ter-132n
+    echo FONT_MAP=8859-2
+} > /etc/vconsole.conf
 
 # Setting and generating locale
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
