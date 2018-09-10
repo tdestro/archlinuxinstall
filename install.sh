@@ -16,35 +16,35 @@ cp ./local.conf /mnt/etc/fonts/local.conf
 ###############################
 #### Configure base system ####
 ###############################
-arch-chroot /mnt /bin/bash <<EOF
+#arch-chroot /mnt /bin/bash <<EOF
 
 # University of Pittsburgh Mirror. 
-echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+#echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 
-pacman -Sy --needed base-devel \
-intel-ucode zsh openssh git bash-completion reflector python
-grub efibootmgr os-prober mtools \
-terminus-font ttf-dejavu ttf-liberation noto-fonts \
-xf86-video-intel mesa-libgl libva-intel-driver libva \
-xorg-server xorg-xinit xorg-apps \
-xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
-xf86-input-synaptics \
-lightdm lightdm-gtk-greeter \
-cinnamon \
-freetype2 \
-zip unzip unrar p7zip lzop cpio zziplib \
-alsa-utils alsa-plugins \
-pulseaudio pulseaudio-alsa \
-ntfs-3g dosfstools exfat-utils f2fs-tools fuse fuse-exfat autofs mtpfs \
-chromium firefox gedit xfce4-terminal \
-go \
-jdk8-openjdk \
-eclipse-cpp \
-meld \
-atom \
-transmission-gtk \
-docker
-gimp 
+#pacman -Sy --needed base-devel \
+#intel-ucode zsh openssh git bash-completion reflector python
+#grub efibootmgr os-prober mtools \
+#terminus-font ttf-dejavu ttf-liberation noto-fonts \
+#xf86-video-intel mesa-libgl libva-intel-driver libva \
+#xorg-server xorg-xinit xorg-apps \
+#xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
+#xf86-input-synaptics \
+#lightdm lightdm-gtk-greeter \
+#cinnamon \
+#freetype2 \
+#zip unzip unrar p7zip lzop cpio zziplib \
+#alsa-utils alsa-plugins \
+#pulseaudio pulseaudio-alsa \
+#ntfs-3g dosfstools exfat-utils f2fs-tools fuse fuse-exfat autofs mtpfs \
+#chromium firefox gedit xfce4-terminal \
+#go \
+#jdk8-openjdk \
+#eclipse-cpp \
+#meld \
+#atom \
+#transmission-gtk \
+#docker
+#gimp 
 #google-cloud-sdk
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
