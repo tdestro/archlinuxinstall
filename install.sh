@@ -7,7 +7,7 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base terminus-font f2fs-tools 
+pacstrap /mnt base
 cp ./local.conf /mnt/etc/fonts/local.conf
  
 ###############################
