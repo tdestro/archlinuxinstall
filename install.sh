@@ -36,7 +36,7 @@ freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
 alsa-utils alsa-plugins \
 pulseaudio pulseaudio-alsa \
-ntfs-3g dosfstools exfat-utils f2fs-tools fuse fuse-exfat autofs mtpfs \
+ntfs-3g dosfstools f2fs-tools fuse fuse-exfat autofs mtpfs \
 chromium firefox gedit xfce4-terminal \
 go \
 jdk8-openjdk \
