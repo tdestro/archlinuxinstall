@@ -41,8 +41,10 @@ arch-chroot /mnt /bin/bash <<EOF
 } > /etc/vconsole.conf
 
 # CONFIGURE MULTILIB
-sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
-sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
+MULTILIB_LINE=`grep -n "\[multilib\]" /etc/pacman.conf | cut -d : -f 1`
+MULTILIB_LINE2=$((MULTILIB_LINE + 1))
+sudo sed -i "${MULTILIB_LINE}s/.*/\[multilib\]/" /etc/pacman.conf
+sudo sed -i "${MULTILIB_LINE2}s/.*/Include = \/etc\/pacman.d\/mirrorlist/" /etc/pacman.conf
 
 pacman --noconfirm -Syyu --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
