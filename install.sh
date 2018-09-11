@@ -76,6 +76,9 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 # Configure timezone
 ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime
 
+# Configure hardware clock.
+hwclock --systohc --utc
+
 # Set hostname.
 echo precision5530 > /etc/hostname
 
@@ -92,10 +95,53 @@ echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc
 #systemctl enable systemd-timesyncd.service
 #timedatectl set-ntp true
 
-# Configure hardware clock.
-#hwclock --systohc --utc
+echo "Installing wifi packages"
+pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
+echo "Generating initramfs"
+sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
+mkinitcpio -p linux
+echo "Setting root password"
+echo "root:baloney1" | chpasswd
+mkdir /boot/EFI
+mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition 
+rm /boot/grub/grub.cfg
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
+grub-mkfont --output=/boot/grub/fonts/DejaVuSansMono24.pf2 --size=24 /usr/share/fonts/TTF/DejaVuSansMono.ttf
+echo "GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2" >> /etc/default/grub 
+grub-mkconfig -o /boot/grub/grub.cfg
 
+# fonts 
+ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 
+#Enable FreeType subpixel hinting mode
+chmod +x /etc/profile.d/freetype2.sh
+/etc/profile.d/freetype2.sh
+
+export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+
+# ADD NEW USER
+useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
+echo "tdestro:baloney1" | chpasswd
+
+# CONFIGURE SUDOERS
+sed -i '/^# %wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
+echo "" >> /etc/sudoers
+echo 'Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
+echo 'Defaults visiblepw, path_info, insults, lecture=always' >> /etc/sudoers
+echo 'Defaults loglinelen=0, logfile =/var/log/sudo.log, log_year, log_host, syslog=auth' >> /etc/sudoers
+echo 'Defaults passwd_tries=3, passwd_timeout=1' >> /etc/sudoers
+echo 'Defaults env_reset, always_set_home, set_home, set_logname' >> /etc/sudoers
+echo 'Defaults !env_editor, editor="/usr/bin/vim:/usr/bin/vi:/usr/bin/nano"' >> /etc/sudoers
+echo 'Defaults timestamp_timeout=15' >> /etc/sudoers
+echo 'Defaults passprompt="[sudo] password for %u: "' >> /etc/sudoers
+echo 'Defaults lecture=never' >> /etc/sudoers
+git config --global user.name "Tony Destro" && git config --global user.email "tony.destro@gmail.com"
+git config --global credential.helper cache store
+
+systemctl enable lightdm.service
+systemctl enable dhcpcd
 
 
 
