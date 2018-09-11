@@ -8,17 +8,26 @@ mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base
+
+arch-chroot /mnt /bin/bash <<EOF
+# University of Pittsburgh Mirror. 
+echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+# Install necessities with --needed to get genfstab to run.
+pacman -Syyu --needed terminus-font f2fs-tools 
+EOF
+
+rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
 cp ./local.conf /mnt/etc/fonts/local.conf
  
 ###############################
 #### Configure base system ####
 ###############################
-arch-chroot /mnt /bin/bash <<EOF
+#arch-chroot /mnt /bin/bash <<EOF
 
 # University of Pittsburgh Mirror. 
-echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
-pacman -Sy --needed terminus-font f2fs-tools 
-rm /etc/fstab && genfstab -U -p / >> /etc/fstab
+#echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+#pacman -Sy --needed terminus-font f2fs-tools 
+#rm /etc/fstab && genfstab -U -p / >> /etc/fstab
 
 #pacman -Sy --needed base-devel \
 #intel-ucode zsh openssh git bash-completion reflector python
