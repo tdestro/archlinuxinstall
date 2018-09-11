@@ -46,7 +46,7 @@ MULTILIB_LINE2=$((MULTILIB_LINE + 1))
 sudo sed -i "${MULTILIB_LINE}s/.*/\[multilib\]/" /etc/pacman.conf
 sudo sed -i "${MULTILIB_LINE2}s/.*/Include = \/etc\/pacman.d\/mirrorlist/" /etc/pacman.conf
 
-pacman --noconfirm -Syyu --needed base-devel \
+pacman --noconfirm -Sy --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
