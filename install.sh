@@ -46,6 +46,7 @@ atom \
 transmission-gtk \
 docker \
 gimp
+
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
 # grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
