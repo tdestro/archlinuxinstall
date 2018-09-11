@@ -74,7 +74,17 @@ export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Configure timezone
-#ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime
+ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime
+
+# Set hostname.
+echo precision5530 > /etc/hostname
+
+# Configure hosts
+echo "" >> /etc/hosts
+echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+
 
 # Configure systemd-timesyncd
 #sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
@@ -84,15 +94,6 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Configure hardware clock.
 #hwclock --systohc --utc
-
-# Set hostname.
-#echo precision5530 > /etc/hostname
-
-# Configure hosts
-#echo "" >> /etc/hosts
-#echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
-#echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
-#echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
 
 
 
