@@ -18,7 +18,7 @@ arch-chroot /mnt /bin/bash <<EOF
 # University of Pittsburgh Mirror. 
 echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 pacman -Sy --needed terminus-font f2fs-tools 
-rm /etc/fstab && genfstab -U -p /mnt >> /etc/fstab
+rm /etc/fstab && genfstab -U -p / >> /etc/fstab
 
 #pacman -Sy --needed base-devel \
 #intel-ucode zsh openssh git bash-completion reflector python
