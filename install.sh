@@ -23,7 +23,7 @@ arch-chroot /mnt /bin/bash <<EOF
 } > /etc/vconsole.conf
 
 pacman -Sy --needed base-devel \
-intel-ucode openssh git bash-completion python \
+intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
