@@ -10,7 +10,25 @@ mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base terminus-font f2fs-tools 
 rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
 cp ./local.conf /mnt/etc/fonts/local.conf
- 
+
+#filezilla libreoffice-fresh \
+#ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
+# grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
+# xorg-server xorg-xinit xorg-apps mesa nvidia \
+# xorg-twm xterm xorg-xclock \
+# xf86-input-synaptics \
+# cinnamon nemo-fileroller \
+#firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
+# pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn gnome-system-monitor \
+# a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
+# gst-plugins-good \
+# gst-plugins-ugly \
+# faenza-icon-theme \
+# libgtop networkmanager \
+# git go \
+# ttf-dejavu \
+#freetype2
+
 ###############################
 #### Configure base system ####
 ###############################
@@ -47,21 +65,4 @@ transmission-gtk \
 docker \
 gimp
 
-#filezilla libreoffice-fresh \
-#ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
-# grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
-# xorg-server xorg-xinit xorg-apps mesa nvidia \
-# xorg-twm xterm xorg-xclock \
-# xf86-input-synaptics \
-# cinnamon nemo-fileroller \
-#firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
-# pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn gnome-system-monitor \
-# a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
-# gst-plugins-good \
-# gst-plugins-ugly \
-# faenza-icon-theme \
-# libgtop networkmanager \
-# git go \
-# ttf-dejavu \
-#freetype2
 EOF
