@@ -78,7 +78,7 @@ export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Configure timezone
-ln -sF /usr/share/zoneinfo/America/New_York /etc/localtime
+ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime
 
 # Configure systemd-timesyncd
 sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
