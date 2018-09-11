@@ -7,9 +7,9 @@ mkfs.f2fs -f /dev/nvme0n1p6
 mount /dev/nvme0n1p6 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base intel-ucode terminus-font f2fs-tools 
-#rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
-#cp ./local.conf /mnt/etc/fonts/local.conf
+pacstrap /mnt base terminus-font f2fs-tools 
+rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
+cp ./local.conf /mnt/etc/fonts/local.conf
  
 ###############################
 #### Configure base system ####
