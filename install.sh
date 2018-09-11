@@ -40,6 +40,10 @@ arch-chroot /mnt /bin/bash <<EOF
     echo FONT_MAP=8859-2
 } > /etc/vconsole.conf
 
+# CONFIGURE MULTILIB
+sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
+sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
+
 pacman --noconfirm -Syyu --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
@@ -92,9 +96,7 @@ echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc
 echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
 echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
 
-# CONFIGURE MULTILIB
-sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
-sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
+
 
 
 
