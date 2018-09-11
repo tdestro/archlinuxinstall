@@ -14,7 +14,13 @@ cp ./local.conf /mnt/etc/fonts/local.conf
 ###############################
 #### Configure base system ####
 ###############################
-#arch-chroot /mnt /bin/bash <<EOF
+arch-chroot /mnt /bin/bash <<EOF
+
+# Terminal fonts that make sense on this machine.
+{
+    echo FONT=ter-132n
+    echo FONT_MAP=8859-2
+} > /etc/vconsole.conf
 
 # University of Pittsburgh Mirror. 
 #echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
@@ -64,11 +70,7 @@ cp ./local.conf /mnt/etc/fonts/local.conf
 # ttf-dejavu \
 #freetype2
 
-# Terminal fonts that make sense on this machine.
-#{
-#    echo FONT=ter-132n
-#    echo FONT_MAP=8859-2
-#} > /etc/vconsole.conf
 
 
-#EOF
+
+EOF
