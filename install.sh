@@ -11,13 +11,14 @@ pacstrap /mnt base
 
 arch-chroot /mnt /bin/bash <<EOF
 # University of Pittsburgh Mirror. 
-echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+#echo "Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
 # Install necessities with --needed to get genfstab to run.
-pacman -Syyu --needed terminus-font f2fs-tools 
+#pacman -Syyu --needed terminus-font f2fs-tools 
+pacman -S --needed terminus-font f2fs-tools 
 EOF
 
-rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
-cp ./local.conf /mnt/etc/fonts/local.conf
+#rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
+#cp ./local.conf /mnt/etc/fonts/local.conf
  
 ###############################
 #### Configure base system ####
