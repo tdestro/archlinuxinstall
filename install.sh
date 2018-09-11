@@ -88,13 +88,6 @@ echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc
 echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
 echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
 
-
-# Configure systemd-timesyncd
-#sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
-#sed -i -e 's/^#FallbackNTP=.*/FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.pool.ntp.org/' /etc/systemd/timesyncd.conf
-#systemctl enable systemd-timesyncd.service
-#timedatectl set-ntp true
-
 echo "Installing wifi packages"
 pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
 echo "Generating initramfs"
@@ -139,6 +132,12 @@ echo 'Defaults passprompt="[sudo] password for %u: "' >> /etc/sudoers
 echo 'Defaults lecture=never' >> /etc/sudoers
 git config --global user.name "Tony Destro" && git config --global user.email "tony.destro@gmail.com"
 git config --global credential.helper cache store
+
+# Configure systemd-timesyncd
+sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
+sed -i -e 's/^#FallbackNTP=.*/FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.pool.ntp.org/' /etc/systemd/timesyncd.conf
+systemctl enable systemd-timesyncd.service
+timedatectl set-ntp true
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
