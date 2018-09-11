@@ -104,9 +104,9 @@ echo "GRUB_FONT=/boot/grub/fonts/DejaVuSansMono24.pf2" >> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # fonts 
-ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
-ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
-ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+ln -sfn /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+ln -sfn /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+ln -sfn /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
 
 #Enable FreeType subpixel hinting mode
 chmod +x /etc/profile.d/freetype2.sh
