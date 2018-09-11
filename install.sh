@@ -40,7 +40,7 @@ arch-chroot /mnt /bin/bash <<EOF
     echo FONT_MAP=8859-2
 } > /etc/vconsole.conf
 
-pacman --noconfirm -Sy --needed base-devel \
+pacman --noconfirm -Syyu --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
