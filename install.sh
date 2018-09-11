@@ -71,4 +71,31 @@ locale-gen
 export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
+# Configure timezone
+ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+
+# Configure systemd-timesyncd
+sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
+sed -i -e 's/^#FallbackNTP=.*/FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.pool.ntp.org/' /etc/systemd/timesyncd.conf
+systemctl enable systemd-timesyncd.service
+timedatectl set-ntp true
+
+# Configure hardware clock.
+hwclock --systohc --utc
+
+# Set hostname.
+echo precision5530 > /etc/hostname
+
+# Configure hosts
+echo "" >> /etc/hosts
+echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+
+# CONFIGURE MULTILIB
+sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf
+sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#//" /etc/pacman.conf
+
+
+
 EOF
