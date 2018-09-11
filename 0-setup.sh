@@ -7,4 +7,5 @@ sed -i "$(( `grep -n "^\[multilib\]" /etc/pacman.conf | cut -f1 -d:` + 1 ))s/^#/
 echo "Server = http://mirror.cs.pitt.edu/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 pacman --noconfirm -Sy --refresh terminus-font f2fs-tools
 setfont ter-132n
+rm /etc/pacman.d/mirrorlist
 cp ./mirrorlist /etc/pacman.d/mirrorlist
