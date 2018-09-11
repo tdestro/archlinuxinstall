@@ -44,26 +44,26 @@ pacman --noconfirm -Sy --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
-xf86-video-intel mesa-libgl libva-intel-driver libva \
-xorg-server xorg-xinit xorg-apps \
-xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
-xf86-input-synaptics \
-lightdm lightdm-gtk-greeter \
-cinnamon \
-freetype2 \
-zip unzip unrar p7zip lzop cpio zziplib \
-alsa-utils alsa-plugins \
-pulseaudio pulseaudio-alsa \
-ntfs-3g dosfstools f2fs-tools fuse fuse-exfat autofs mtpfs \
-chromium firefox gedit xfce4-terminal \
-go \
-jdk8-openjdk \
-eclipse-cpp \
-meld \
-atom \
-transmission-gtk \
-docker \
-gimp
+#xf86-video-intel mesa-libgl libva-intel-driver libva \
+#xorg-server xorg-xinit xorg-apps \
+#xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
+#xf86-input-synaptics \
+#lightdm lightdm-gtk-greeter \
+#cinnamon \
+#freetype2 \
+#zip unzip unrar p7zip lzop cpio zziplib \
+#alsa-utils alsa-plugins \
+#pulseaudio pulseaudio-alsa \
+#ntfs-3g dosfstools f2fs-tools fuse fuse-exfat autofs mtpfs \
+#chromium firefox gedit xfce4-terminal \
+#go \
+#jdk8-openjdk \
+#eclipse-cpp \
+#meld \
+#atom \
+#transmission-gtk \
+#docker \
+#gimp
 
 # Setting and generating locale
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
