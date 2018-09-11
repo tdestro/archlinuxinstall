@@ -40,12 +40,6 @@ arch-chroot /mnt /bin/bash <<EOF
     echo FONT_MAP=8859-2
 } > /etc/vconsole.conf
 
-# CONFIGURE MULTILIB
-MULTILIB_LINE=`grep -n "\[multilib\]" /etc/pacman.conf | cut -d : -f 1`
-MULTILIB_LINE2=$((MULTILIB_LINE + 1))
-sudo sed -i "${MULTILIB_LINE}s/.*/\[multilib\]/" /etc/pacman.conf
-sudo sed -i "${MULTILIB_LINE2}s/.*/Include = \/etc\/pacman.d\/mirrorlist/" /etc/pacman.conf
-
 pacman --noconfirm -Sy --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
