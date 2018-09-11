@@ -10,6 +10,8 @@ mount /dev/nvme0n1p4 /mnt/boot
 pacstrap /mnt base terminus-font f2fs-tools 
 rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
 cp ./local.conf /mnt/etc/fonts/local.conf
+rm /mnt/etc/pacman.conf
+cp /etc/pacman.conf /mnt/etc/pacman.conf
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
