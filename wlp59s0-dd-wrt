@@ -1,0 +1,7 @@
+Description='Automatically generated profile by wifi-menu'
+Interface=wlp59s0
+Connection=wireless
+Security=wpa
+ESSID=dd-wrt
+IP=dhcp
+Key=rothbard
