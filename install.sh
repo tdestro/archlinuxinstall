@@ -70,7 +70,8 @@ gimp \
 redshift \
 steam \
 vlc \
-virtualbox virtualbox-guest-iso
+virtualbox virtualbox-guest-iso \
+msr-tools
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
