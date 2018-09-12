@@ -157,7 +157,7 @@ systemctl enable dhcpcd
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'yay -S --noconfirm --noprovides jetbrains-toolbox' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox' 
 
 
 
