@@ -155,7 +155,7 @@ systemctl enable lightdm.service
 systemctl enable dhcpcd
 
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -s' 
-pacman -U /home/tdestro/yay/*.tar.gz
+pacman -U /home/tdestro/yay/*.pkg.tar.xz
 #rm -rf /home/tdestro/yay 
 yay -S jetbrains-toolbox
 
