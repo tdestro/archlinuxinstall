@@ -12,6 +12,7 @@ rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
 cp ./local.conf /mnt/etc/fonts/local.conf
 rm /mnt/etc/pacman.conf
 cp /etc/pacman.conf /mnt/etc/pacman.conf
+cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
@@ -65,7 +66,8 @@ meld \
 atom \
 transmission-gtk \
 docker \
-gimp
+gimp \
+redshift
 
 # Setting and generating locale
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -151,8 +153,16 @@ echo "add control = Control_L Control_R" >> /home/tdestro/.Xmodmap
 # make it work in current session
 xmodmap ~/.Xmodmap
 
+# Allow redshift to access location
+echo "[redshift]" > /etc/geoclue/geoclue.conf
+echo "allowed=true" >> /etc/geoclue/geoclue.conf
+echo "system=false" >> /etc/geoclue/geoclue.conf
+echo "users=" >> /etc/geoclue/geoclue.conf
+
 systemctl enable lightdm.service
 systemctl enable dhcpcd
+systemctl enable netctl-auto@wlp59s0.service
+systemctl enable redshift-gtk.service
 
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
