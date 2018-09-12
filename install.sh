@@ -175,6 +175,9 @@ pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
 su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle' 
 
-
-
+# Install JLink
+su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
+su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
+rm /home/tdestro/JLink_Linux_x86_64.deb
+pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
 EOF
