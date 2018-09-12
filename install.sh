@@ -47,7 +47,7 @@ intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
-xorg-server xorg-xinit xorg-apps \
+xorg-server xorg-xinit xorg-apps xorg-xrandr \
 xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
 xf86-input-synaptics \
 lightdm lightdm-gtk-greeter \
