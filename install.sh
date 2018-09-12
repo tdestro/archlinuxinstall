@@ -67,7 +67,12 @@ atom \
 transmission-gtk \
 docker \
 gimp \
-redshift
+redshift \
+steam \
+vlc \
+virtualbox virtualbox-guest-iso
+
+echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
 # Setting and generating locale
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -134,6 +139,7 @@ echo 'Defaults passprompt="[sudo] password for %u: "' >> /etc/sudoers
 echo 'Defaults lecture=never' >> /etc/sudoers
 git config --global user.name "Tony Destro" && git config --global user.email "tony.destro@gmail.com"
 git config --global credential.helper cache store
+usermod -aG vboxusers tdestro
 
 # Configure systemd-timesyncd
 sed -i -e 's/^#NTP=.*/NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org/' /etc/systemd/timesyncd.conf
@@ -167,7 +173,7 @@ systemctl enable redshift-gtk.service
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle' 
 
 
 
