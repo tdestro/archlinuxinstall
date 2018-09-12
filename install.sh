@@ -13,6 +13,8 @@ cp ./local.conf /mnt/etc/fonts/local.conf
 rm /mnt/etc/pacman.conf
 cp /etc/pacman.conf /mnt/etc/pacman.conf
 cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
+cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
+cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
@@ -71,7 +73,8 @@ redshift \
 steam \
 vlc \
 virtualbox virtualbox-guest-iso \
-msr-tools
+msr-tools \
+python-pip
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
@@ -170,6 +173,10 @@ systemctl enable lightdm.service
 systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
 systemctl enable redshift-gtk.service
+
+# under volt this thing.
+pip install undervolt
+systemctl enable undervolt.timer
 
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
