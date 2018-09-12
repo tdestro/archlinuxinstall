@@ -89,7 +89,7 @@ echo '::1             precision5530.localdomain localhost precision5530' >> /etc
 echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
 
 echo "Installing wifi packages"
-pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
+pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond netctl
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
