@@ -139,9 +139,25 @@ sed -i -e 's/^#FallbackNTP=.*/FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.poo
 systemctl enable systemd-timesyncd.service
 timedatectl set-ntp true
 
+# Save current map, keycode 66 is where Caps lock lies
+xmodmap -pke > ~/.Xmodmap.bak
+
+# add following content to ~/.Xmodmap:
+echo "clear lock" >> /home/tdestro/.Xmodmap
+echo "keycode 66 = Control_L" >> /home/tdestro/.Xmodmap
+echo "add control = Control_L Control_R" >> /home/tdestro/.Xmodmap
+
+# We're using lightdm, no need to source that file.
+# make it work in current session
+xmodmap ~/.Xmodmap
+
 systemctl enable lightdm.service
 systemctl enable dhcpcd
 
+su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -s' 
+pacman -U /home/tdestro/yay/*.tar.gz
+#rm -rf /home/tdestro/yay 
+yay -S jetbrains-toolbox
 
 
 EOF
