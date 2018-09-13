@@ -74,7 +74,8 @@ steam \
 vlc \
 virtualbox virtualbox-guest-iso \
 msr-tools \
-python-pip
+python-pip \
+geoclue2
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
