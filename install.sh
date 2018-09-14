@@ -51,7 +51,7 @@ ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps xorg-xrandr \
 xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
-xf86-input-synaptics \
+xf86-input-libinput \
 lightdm lightdm-gtk-greeter \
 cinnamon \
 freetype2 \
@@ -75,6 +75,14 @@ virtualbox virtualbox-guest-iso \
 msr-tools \
 python-pip \
 geoclue2
+
+# Monitor.
+echo "Section \"Monitor\"" > /etc/X11/xorg.conf.d/90-monitor.conf && \
+echo "    Identifier             \"Display0\"" >> /etc/X11/xorg.conf.d/90-monitor.conf && \
+echo "    DisplaySize            345.6 194.5 " >> /etc/X11/xorg.conf.d/90-monitor.conf && \
+echo "EndSection" >> /etc/X11/xorg.conf.d/90-monitor.conf
+
+
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
