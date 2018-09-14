@@ -75,16 +75,7 @@ vlc \
 virtualbox virtualbox-guest-iso \
 msr-tools \
 powertop \
-python-pip \
-geoclue2 \
-
-# Monitor.
-echo "Section \"Monitor\"" > /etc/X11/xorg.conf.d/90-monitor.conf && \
-echo "    Identifier             \"Display0\"" >> /etc/X11/xorg.conf.d/90-monitor.conf && \
-echo "    DisplaySize            345.6 194.5 " >> /etc/X11/xorg.conf.d/90-monitor.conf && \
-echo "EndSection" >> /etc/X11/xorg.conf.d/90-monitor.conf
-
-
+python-pip
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
@@ -174,15 +165,16 @@ echo "add control = Control_L Control_R" >> /home/tdestro/.Xmodmap
 xmodmap ~/.Xmodmap
 
 # Allow redshift to access location
-echo "[redshift]" > /etc/geoclue/geoclue.conf
-echo "allowed=true" >> /etc/geoclue/geoclue.conf
-echo "system=false" >> /etc/geoclue/geoclue.conf
-echo "users=" >> /etc/geoclue/geoclue.conf
+su tdestro -c 'echo "[redshift]" > /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo "location-provider=manual" >> /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo "[manual] >>/home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo "lon=-79.995888" >> /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo "lat=40.4417" >> /home/tdestro/.config/redshift/redshift.conf'
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
-systemctl enable redshift-gtk.service
+systemctl enable redshift.service
 
 # under volt this thing.
 pip install undervolt
