@@ -69,7 +69,7 @@ atom \
 transmission-gtk \
 docker \
 gimp \
-redshift \
+librsvg redshift-gtk \
 steam \
 vlc \
 virtualbox virtualbox-guest-iso \
@@ -183,7 +183,6 @@ su tdestro -c 'echo lat=40.4417 >> /home/tdestro/.config/redshift/redshift.conf'
 systemctl enable lightdm.service
 systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
-systemctl enable redshift.service
 systemctl enable powertop.service
 
 # under volt this thing.
