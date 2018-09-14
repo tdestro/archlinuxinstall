@@ -173,6 +173,7 @@ echo "keycode 66 = Control_L" >> /home/tdestro/.Xmodmap
 echo "add control = Control_L Control_R" >> /home/tdestro/.Xmodmap
 
 # Allow redshift to access location
+su tdestro -c 'mkdir /home/tdestro/.config /home/tdestro/.config/redshift'
 su tdestro -c 'echo "[redshift]" > /home/tdestro/.config/redshift/redshift.conf'
 su tdestro -c 'echo "location-provider=manual" >> /home/tdestro/.config/redshift/redshift.conf'
 su tdestro -c 'echo "[manual] >>/home/tdestro/.config/redshift/redshift.conf'
@@ -186,13 +187,13 @@ systemctl enable redshift.service
 systemctl enable powertop.service
 
 # under volt this thing.
-pip install undervolt
-systemctl enable undervolt.timer
+#pip install undervolt
+#systemctl enable undervolt.timer
 
-su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
-pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
-rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2' 
+#su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
+#pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
+#rm -rf /home/tdestro/yay 
+#su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2' 
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
