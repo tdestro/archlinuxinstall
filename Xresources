@@ -29,7 +29,7 @@ UXTerm*foreground: white
 UXTerm*font: terminus-10
 
 ! Fonts {{{
-Xft.dpi:        141
+Xft.dpi:        282.24
 ! Xft.antialias:  true
 ! Xft.rgba:       rgb
 ! Xft.hinting:    true
