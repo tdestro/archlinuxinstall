@@ -174,11 +174,11 @@ echo "add control = Control_L Control_R" >> /home/tdestro/.Xmodmap
 
 # Allow redshift to access location
 su tdestro -c 'mkdir /home/tdestro/.config /home/tdestro/.config/redshift'
-su tdestro -c 'echo "[redshift]" > /home/tdestro/.config/redshift/redshift.conf'
-su tdestro -c 'echo "location-provider=manual" >> /home/tdestro/.config/redshift/redshift.conf'
-su tdestro -c 'echo "[manual] >>/home/tdestro/.config/redshift/redshift.conf'
-su tdestro -c 'echo "lon=-79.995888" >> /home/tdestro/.config/redshift/redshift.conf'
-su tdestro -c 'echo "lat=40.4417" >> /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo [redshift] > /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo location-provider=manual >> /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo [manual] >>/home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo lon=-79.995888 >> /home/tdestro/.config/redshift/redshift.conf'
+su tdestro -c 'echo lat=40.4417 >> /home/tdestro/.config/redshift/redshift.conf'
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
