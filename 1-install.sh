@@ -14,6 +14,7 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf
 cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
 cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
 cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
+cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
@@ -73,8 +74,9 @@ steam \
 vlc \
 virtualbox virtualbox-guest-iso \
 msr-tools \
+powertop \
 python-pip \
-geoclue2
+geoclue2 \
 
 # Monitor.
 echo "Section \"Monitor\"" > /etc/X11/xorg.conf.d/90-monitor.conf && \
@@ -189,11 +191,11 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2' 
 
 # Install JLink
-su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
-su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
-rm /home/tdestro/JLink_Linux_x86_64.deb
-pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
+#su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
+#su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
+#rm /home/tdestro/JLink_Linux_x86_64.deb
+#pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
 EOF
