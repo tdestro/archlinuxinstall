@@ -75,7 +75,22 @@ vlc \
 virtualbox virtualbox-guest-iso \
 msr-tools \
 powertop \
-python-pip
+python-pip \
+bumblebee primus bbswitch
+
+# powertop
+{
+    echo [Unit]
+    echo Description=Powertop tunings
+    echo 
+    echo [Service]
+    echo Type=oneshot
+    echo ExecStart=/usr/bin/powertop --auto-tune
+    echo 
+    echo [Install]
+    echo WantedBy=multi-user.target
+} > /etc/systemd/system/powertop.service
+
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
 
@@ -168,6 +183,7 @@ systemctl enable lightdm.service
 systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
 systemctl enable redshift.service
+systemctl enable powertop.service
 
 # under volt this thing.
 pip install undervolt
@@ -176,7 +192,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 plasma5-applets-kde-arch-update-notifier-git' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2' 
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
@@ -184,3 +200,5 @@ su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolb
 #rm /home/tdestro/JLink_Linux_x86_64.deb
 #pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
 EOF
+
+cp ./Xresources /mnt/home/tdestro/.Xresources
