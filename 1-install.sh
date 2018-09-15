@@ -52,7 +52,7 @@ jdk8-openjdk \
 eclipse-cpp \
 meld \
 atom \
-transmission-gtk \
+deluge \
 docker \
 gimp \
 librsvg redshift \
