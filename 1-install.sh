@@ -136,6 +136,7 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 #sed -i 's/#xft-dpi.*/xft-dpi=282/' /etc/lightdm/lightdm-gtk-greeter.conf;
 sed -i 's/#xserver-command.*/xserver-command=X -dpi 282.24/' /etc/lightdm/lightdm.conf
 
+
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
@@ -191,6 +192,9 @@ su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; make
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
 su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 visual-studio-code-bin gitkraken postman-bin' 
+
+# avatar from github for light dm
+su tdestro -c 'curl –sS –output /home/tdestro/.face https://avatars0.githubusercontent.com/u/10113013'
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
