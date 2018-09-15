@@ -67,6 +67,8 @@ cups cups-pdf system-config-printer gutenprint ghostscript gsfonts foomatic-db f
 nfs-utils samba smbnetfs \
 xfburn \
 wine \
+gparted \
+borg \
 nvidia bumblebee primus bbswitch
 
 # powertop
@@ -191,10 +193,20 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 visual-studio-code-bin gitkraken postman-bin' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 visual-studio-code-bin gitkraken postman-bin simplenote-electron-bin' 
 
 # avatar from github for light dm
 su tdestro -c 'curl –sS –output /home/tdestro/.face https://avatars0.githubusercontent.com/u/10113013'
+
+# gcloud 
+curl https://sdk.cloud.google.com -o ./install-gcloud.sh && \
+chmod +x ./install-gcloud.sh && \
+./install-gcloud.sh --disable-prompts --install-dir=/opt && \
+rm ./install-gcloud.sh
+su tdestro -c 'echo source /opt/google-cloud-sdk/completion.bash.inc >> /home/tdestro/.profile'
+su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/.profile'
+
+
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
