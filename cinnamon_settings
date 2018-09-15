@@ -1,0 +1,26 @@
+[/]
+next-applet-id=14
+enabled-applets=['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:1:show-desktop@cinnamon.org:2', 'panel1:left:2:panel-launchers@cinnamon.org:3', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:bluetooth@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']
+enabled-desklets=@as []
+
+[theme]
+name='Vertex'
+
+[desktop/background]
+picture-uri='file:///usr/share/backgrounds/gnome/SeaSunset.jpg'
+picture-options='zoom'
+
+[desktop/background/slideshow]
+image-source='xml:///usr/share/gnome-background-properties/gnome-backgrounds.xml'
+delay=15
+
+[desktop/interface]
+clock-use-24h=false
+gtk-theme='Vertex-Dark'
+toolkit-accessibility=false
+
+[desktop/sound]
+event-sounds=false
+
+[desktop/wm/preferences]
+theme='Vertex-Dark'
