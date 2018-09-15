@@ -17,23 +17,8 @@ cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
 cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf
 cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
 
-#filezilla libreoffice-fresh \
-#ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
-# grub efibootmgr dosfstools os-prober mtools terminus-font f2fs-tools bash-completion \
-# xorg-server xorg-xinit xorg-apps mesa nvidia \
-# xorg-twm xterm xorg-xclock \
-# xf86-input-synaptics \
-# cinnamon nemo-fileroller \
-#firefox vlc flashplugin gedit gnome-terminal gnome-screenshot \
-# pulseaudio pulseaudio-alsa pavucontrol chromium unzip unrar p7zip pidgin deluge smplayer audacious qmmp gimp xfburn gnome-system-monitor \
-# a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gst-plugins-base \
-# gst-plugins-good \
-# gst-plugins-ugly \
-# faenza-icon-theme \
-# libgtop networkmanager \
-# git go \
-# ttf-dejavu \
-#freetype2
+#xinput set-prop 14 145 2.400000, 0.000000, 0.000000, 0.000000, 2.400000, 0.000000, 0.000000, 0.000000, 1.000000
+
 
 ###############################
 #### Configure base system ####
@@ -55,14 +40,14 @@ xorg-server xorg-xinit xorg-apps xorg-xrandr \
 xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
 xf86-input-libinput \
 lightdm lightdm-gtk-greeter \
-cinnamon variety \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
 alsa-utils alsa-plugins \
-pulseaudio pulseaudio-alsa \
+pulseaudio pulseaudio-alsa qmmp\
 ntfs-3g dosfstools f2fs-tools fuse fuse-exfat autofs mtpfs \
-chromium firefox gedit xfce4-terminal \
+chromium firefox flashplugin gedit xfce4-terminal \
 go \
+gvim \
 jdk8-openjdk \
 eclipse-cpp \
 meld \
@@ -77,6 +62,11 @@ virtualbox virtualbox-guest-iso \
 msr-tools \
 powertop \
 python-pip \
+filezilla libreoffice-fresh \
+cups cups-pdf system-config-printer gutenprint ghostscript gsfonts foomatic-db foomatic-db-engine foomatic-db-nonfree foomatic-db-ppds foomatic-db-nonfree-ppds foomatic-db-gutenprint-ppds\
+nfs-utils samba smbnetfs \
+xfburn \
+wine \
 nvidia bumblebee primus bbswitch
 
 # powertop
@@ -191,6 +181,7 @@ systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
 systemctl enable powertop.service
 systemctl enable bumblebeed.service
+systemctl enable org.cups.cupsd.service
 
 # under volt this thing.
 pip install undervolt
@@ -199,7 +190,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 visual-studio-code-bin gitkraken postman-bin' 
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
