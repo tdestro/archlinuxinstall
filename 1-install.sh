@@ -54,7 +54,7 @@ xorg-server xorg-xinit xorg-apps xorg-xrandr \
 xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
 xf86-input-libinput \
 lightdm lightdm-gtk-greeter \
-cinnamon variety\
+cinnamon variety \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
 alsa-utils alsa-plugins \
@@ -76,7 +76,7 @@ virtualbox virtualbox-guest-iso \
 msr-tools \
 powertop \
 python-pip \
-bumblebee primus bbswitch
+nvidia bumblebee primus bbswitch
 
 # powertop
 {
