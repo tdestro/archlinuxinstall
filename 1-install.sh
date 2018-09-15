@@ -15,6 +15,7 @@ cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
 cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
 cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
 cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf
+cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
 
 #filezilla libreoffice-fresh \
 #ttf-dejavu ttf-droid ttf-fira-mono ttf-fira-sans ttf-liberation ttf-linux-libertine-g ttf-oxygen ttf-tlwg ttf-ubuntu-font-family \
@@ -208,4 +209,3 @@ su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolb
 EOF
 
 cp ./Xresources /mnt/home/tdestro/.Xresources
-cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
