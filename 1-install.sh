@@ -142,8 +142,9 @@ chmod +x /etc/profile.d/freetype2.sh
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
 # lightdm fonts
-sed -i 's/#xft-dpi.*/xft-dpi=282/' /etc/lightdm/lightdm-gtk-greeter.conf;
+#sed -i 's/#xft-dpi.*/xft-dpi=282/' /etc/lightdm/lightdm-gtk-greeter.conf;
 sed -i 's/#xserver-command.*/xserver-command=X -dpi 282.24/' /etc/lightdm/lightdm.conf
+
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
@@ -196,7 +197,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether' 
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
