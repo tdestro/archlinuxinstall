@@ -189,6 +189,7 @@ systemctl enable lightdm.service
 systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
 systemctl enable powertop.service
+systemctl enable bumblebeed.service
 
 # under volt this thing.
 pip install undervolt
