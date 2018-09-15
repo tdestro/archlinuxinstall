@@ -141,6 +141,9 @@ chmod +x /etc/profile.d/freetype2.sh
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
+# lightdm fonts
+sed -i 's/#xft-dpi.*/xft-dpi=282.24/' /etc/lightdm/lightdm-gtk-greeter.conf;
+
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
@@ -180,6 +183,7 @@ su tdestro -c 'echo [manual] >>/home/tdestro/.config/redshift/redshift.conf'
 su tdestro -c 'echo lon=-79.995888 >> /home/tdestro/.config/redshift/redshift.conf'
 su tdestro -c 'echo lat=40.4417 >> /home/tdestro/.config/redshift/redshift.conf'
 
+
 systemctl enable lightdm.service
 systemctl enable dhcpcd
 systemctl enable netctl-auto@wlp59s0.service
@@ -202,3 +206,4 @@ systemctl enable powertop.service
 EOF
 
 cp ./Xresources /mnt/home/tdestro/.Xresources
+cp ./10-monitor.conf /etc/X11/xorg.conf.d/10-monitor.conf
