@@ -63,7 +63,7 @@ msr-tools \
 powertop \
 python-pip \
 filezilla libreoffice-fresh \
-cups cups-pdf system-config-printer gutenprint ghostscript gsfonts foomatic-db foomatic-db-engine foomatic-db-nonfree foomatic-db-ppds foomatic-db-nonfree-ppds foomatic-db-gutenprint-ppds\
+cups cups-pdf system-config-printer gutenprint ghostscript gsfonts foomatic-db foomatic-db-engine foomatic-db-nonfree foomatic-db-ppds foomatic-db-nonfree-ppds \
 nfs-utils samba smbnetfs \
 xfburn \
 wine \
