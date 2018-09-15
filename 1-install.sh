@@ -40,7 +40,7 @@ xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps xorg-xrandr \
 xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
 xf86-input-libinput \
-lightdm lightdm-gtk-greeter \
+lightdm accountsservice \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
 alsa-utils alsa-plugins \
@@ -198,7 +198,7 @@ rm -rf /home/tdestro/yay
 su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 visual-studio-code-bin gitkraken postman-bin simplenote-electron-bin' 
 
 # avatar from github for light dm
-su tdestro -c 'curl https://avatars0.githubusercontent.com/u/10113013 -o /home/tdestro/.face'
+su tdestro -c 'curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /home/tdestro/.face'
 
 # gcloud 
 curl https://sdk.cloud.google.com -o ./install-gcloud.sh && \
