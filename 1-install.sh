@@ -69,7 +69,7 @@ atom \
 transmission-gtk \
 docker \
 gimp \
-librsvg redshift-gtk \
+librsvg redshift \
 steam \
 vlc \
 virtualbox virtualbox-guest-iso \
