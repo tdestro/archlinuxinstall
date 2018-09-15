@@ -206,8 +206,16 @@ chmod +x ./install-gcloud.sh && \
 rm ./install-gcloud.sh
 su tdestro -c 'echo source /opt/google-cloud-sdk/completion.bash.inc >> /home/tdestro/.profile'
 su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/.profile'
-
 su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift@marvel4u.zip -o /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip && unzip /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip -d /home/tdestro/.local/share/cinnamon/applets' 
+
+#{
+#echo [Desktop Entry]
+#echo Name=name
+#echo Exec=varity
+#echo Type=Application
+#} > /home/tdestro/.config/autostart/variety.desktop
+
+
 
 
 
