@@ -210,7 +210,7 @@ su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/
 
 su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdestro/.local/share/cinnamon /home/tdestro/.local/share/cinnamon/applets'
 su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift@marvel4u.zip -o /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip && unzip /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip -d /home/tdestro/.local/share/cinnamon/applets'
-su tdestro -c 'dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings'
+dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
