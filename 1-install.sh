@@ -190,13 +190,13 @@ systemctl enable netctl-auto@wlp59s0.service
 systemctl enable powertop.service
 
 # under volt this thing.
-#pip install undervolt
-#systemctl enable undervolt.timer
+pip install undervolt
+systemctl enable undervolt.timer
 
-#su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
-#pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
-#rm -rf /home/tdestro/yay 
-#su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2' 
+su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
+pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
+rm -rf /home/tdestro/yay 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter' 
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
