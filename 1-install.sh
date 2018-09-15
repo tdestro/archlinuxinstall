@@ -206,4 +206,4 @@ systemctl enable powertop.service
 EOF
 
 cp ./Xresources /mnt/home/tdestro/.Xresources
-cp ./10-monitor.conf /etc/X11/xorg.conf.d/10-monitor.conf
+cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
