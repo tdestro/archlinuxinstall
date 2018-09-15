@@ -16,6 +16,7 @@ cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
 cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
 cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf
 cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
+cp ./cinnamon_settings /mnt/cinnamon_settings
 
 #xinput set-prop 14 145 2.400000, 0.000000, 0.000000, 0.000000, 2.400000, 0.000000, 0.000000, 0.000000, 1.000000
 
@@ -206,8 +207,10 @@ chmod +x ./install-gcloud.sh && \
 rm ./install-gcloud.sh
 su tdestro -c 'echo source /opt/google-cloud-sdk/completion.bash.inc >> /home/tdestro/.profile'
 su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/.profile'
-su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift@marvel4u.zip -o /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip && unzip /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip -d /home/tdestro/.local/share/cinnamon/applets' 
 
+su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdestro/.local/share/cinnamon /home/tdestro/.local/share/cinnamon/applets'
+su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift@marvel4u.zip -o /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip && unzip /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip -d /home/tdestro/.local/share/cinnamon/applets'
+su tdestro -c 'dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings'
 
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
@@ -215,5 +218,5 @@ su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift
 #rm /home/tdestro/JLink_Linux_x86_64.deb
 #pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
 EOF
-dconf load /mnt/org/cinnamon/ < ./cinnamon_settings
+
 cp ./Xresources /mnt/home/tdestro/.Xresources
