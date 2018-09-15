@@ -143,7 +143,7 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
 # lightdm fonts
 sed -i 's/#xft-dpi.*/xft-dpi=282/' /etc/lightdm/lightdm-gtk-greeter.conf;
-sed -i 's/#xserver-command.*/xserver-command=282.24/' /etc/lightdm/lightdm-gtk-greeter.conf;
+sed -i 's/#xserver-command.*/xserver-command=X -dpi 282.24/' /etc/lightdm/lightdm.conf
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
