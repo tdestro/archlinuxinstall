@@ -200,6 +200,11 @@ su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolb
 # avatar from github for light dm
 su tdestro -c 'curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /var/lib/AccountsService/icons/tdestro.jpg'
 
+{
+    echo [User]
+    echo Icon=/var/lib/AccountsService/icons/tdestro.jpg
+} > /var/lib/AccountsService/users/tdestro
+
 # gcloud 
 curl https://sdk.cloud.google.com -o ./install-gcloud.sh && \
 chmod +x ./install-gcloud.sh && \
