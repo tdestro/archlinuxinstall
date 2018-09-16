@@ -13,10 +13,10 @@ exit_on_error() {
 # enable !! command completion
 set -o history -o histexpand
 
-# ensure drives are unmounted.
-umount /dev/nvme0n1p4 || [ $? -eq 1 ]
-umount /dev/nvme0n1p5 || [ $? -eq 1 ]
-umount /dev/nvme0n1p6 || [ $? -eq 1 ]
+# ensure drives are unmounted, even if it's stupid.
+umount -l /dev/nvme0n1p4 || [ $? -eq 1 ]
+umount -l /dev/nvme0n1p5 || [ $? -eq 1 ]
+umount -l /dev/nvme0n1p6 || [ $? -eq 1 ]
 
 mkfs.ext4 -F /dev/nvme0n1p4
 exit_on_error $? !!
