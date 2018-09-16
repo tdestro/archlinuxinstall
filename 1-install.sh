@@ -27,8 +27,6 @@ cp /etc/pacman.conf /mnt/etc/pacman.conf && \
 cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt && \
 cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer && \
 cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service && \
-cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf && \
-cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf && \
 cp ./cinnamon_settings /mnt/cinnamon_settings && \
 
 #xinput set-prop 14 145 2.400000, 0.000000, 0.000000, 0.000000, 2.400000, 0.000000, 0.000000, 0.000000, 1.000000
@@ -237,6 +235,7 @@ dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 #su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
 #rm /home/tdestro/JLink_Linux_x86_64.deb
 #pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
-EOF
-
+EOF && \
+cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf && \
+cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf && \
 cp ./Xresources /mnt/home/tdestro/.Xresources
