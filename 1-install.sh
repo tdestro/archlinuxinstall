@@ -106,7 +106,8 @@ borg \
 nvidia bumblebee primus bbswitch \
 acpid \
 networkmanager \
-gdk-pixbuf2
+gdk-pixbuf2 \
+xscreensaver 
 
 
 
