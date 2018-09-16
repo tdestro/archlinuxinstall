@@ -231,7 +231,7 @@ systemctl enable powertop.service
 systemctl enable bumblebeed.service
 systemctl enable org.cups.cupsd.service
 systemctl enable acpid.service
-
+systemctl disable cinnamon-settings-daemon-smartcard
 
 
 
