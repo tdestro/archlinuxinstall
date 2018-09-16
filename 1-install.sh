@@ -13,21 +13,36 @@ exit_on_error() {
 # enable !! command completion
 set -o history -o histexpand
 
-mkfs.ext4 -F /dev/nvme0n1p4 && \
-mkswap -f /dev/nvme0n1p5 && \
-swapon /dev/nvme0n1p5 && \
-mkfs.f2fs -f /dev/nvme0n1p6 && \
-mount /dev/nvme0n1p6 /mnt && \
-mkdir /mnt/boot && \
-mount /dev/nvme0n1p4 /mnt/boot && \
-pacstrap /mnt base terminus-font f2fs-tools && \ 
-rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab && \
-rm /mnt/etc/pacman.conf && \
-cp /etc/pacman.conf /mnt/etc/pacman.conf && \
-cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt && \
-cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer && \
-cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service && \
-cp ./cinnamon_settings /mnt/cinnamon_settings && \
+mkfs.ext4 -F /dev/nvme0n1p4
+exit_on_error $? !!
+mkswap -f /dev/nvme0n1p5
+exit_on_error $? !!
+swapon /dev/nvme0n1p5
+exit_on_error $? !!
+mkfs.f2fs -f /dev/nvme0n1p6
+exit_on_error $? !!
+mount /dev/nvme0n1p6 /mnt
+exit_on_error $? !!
+mkdir /mnt/boot
+exit_on_error $? !!
+mount /dev/nvme0n1p4 /mnt/boot
+exit_on_error $? !!
+pacstrap /mnt base terminus-font f2fs-tools
+exit_on_error $? !!
+rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
+exit_on_error $? !!
+rm /mnt/etc/pacman.conf
+exit_on_error $? !!
+cp /etc/pacman.conf /mnt/etc/pacman.conf
+exit_on_error $? !!
+cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
+exit_on_error $? !!
+cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
+exit_on_error $? !!
+cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
+exit_on_error $? !!
+cp ./cinnamon_settings /mnt/cinnamon_settings
+exit_on_error $? !!
 
 #xinput set-prop 14 145 2.400000, 0.000000, 0.000000, 0.000000, 2.400000, 0.000000, 0.000000, 0.000000, 1.000000
 
@@ -235,7 +250,10 @@ dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 #su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
 #rm /home/tdestro/JLink_Linux_x86_64.deb
 #pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
-EOF && \
-cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf && \
-cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf && \
+EOF
+
+cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf 
+exit_on_error $? !!
+cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
+exit_on_error $? !!
 cp ./Xresources /mnt/home/tdestro/.Xresources
