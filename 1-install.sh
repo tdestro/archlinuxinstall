@@ -104,7 +104,8 @@ wine \
 gparted \
 borg \
 nvidia bumblebee primus bbswitch \
-acpid
+acpid \
+networkmanager
 
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
@@ -232,8 +233,7 @@ systemctl enable bumblebeed.service
 systemctl enable org.cups.cupsd.service
 systemctl enable acpid.service
 systemctl disable cinnamon-settings-daemon-smartcard
-
-
+systemctl enable NetworkManager.service
 
 
 
