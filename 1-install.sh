@@ -104,6 +104,10 @@ wine \
 gparted \
 borg \
 nvidia bumblebee primus bbswitch
+
+# ADD NEW USER
+useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
+echo "tdestro:baloney1" | chpasswd
 EOF
 
 cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf 
@@ -182,11 +186,6 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 # lightdm fonts
 #sed -i 's/#xft-dpi.*/xft-dpi=282/' /etc/lightdm/lightdm-gtk-greeter.conf;
 sed -i 's/#xserver-command.*/xserver-command=X -dpi 282.24/' /etc/lightdm/lightdm.conf
-
-
-# ADD NEW USER
-useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
-echo "tdestro:baloney1" | chpasswd
 
 # CONFIGURE SUDOERS
 sed -i '/^# %wheel ALL=(ALL) ALL/s/^# //' /etc/sudoers
