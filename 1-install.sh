@@ -60,23 +60,6 @@ exit_on_error $? !!
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
-exit_on_error() {
-    exit_code=$1
-    last_command=${@:2}
-    if [ $exit_code -ne 0 ]; then
-        >&2 echo "\"${last_command}\" command failed with exit code ${exit_code}."
-        exit $exit_code
-    fi
-}
-# enable !! command completion
-set -o history -o histexpand
-
-# Terminal fonts that make sense on this machine.
-{
-    echo FONT=ter-132n
-    echo FONT_MAP=8859-2
-} > /etc/vconsole.conf
-
 pacman --noconfirm -Sy --needed base-devel \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
@@ -84,7 +67,7 @@ ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps \
 xterm \
-xf86-input-libinput xf86-video-modesetting, xf86-video-vesa and xf86-video-fbdev \
+xf86-input-libinput xf86-video-modesetting xf86-video-vesa xf86-video-fbdev \
 lightdm accountsservice \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
@@ -116,7 +99,15 @@ wine \
 gparted \
 borg \
 nvidia bumblebee primus bbswitch
-exit_on_error $? !!
+EOF
+
+arch-chroot /mnt /bin/bash <<EOF
+# Terminal fonts that make sense on this machine.
+{
+    echo FONT=ter-132n
+    echo FONT_MAP=8859-2
+} > /etc/vconsole.conf
+
 
 {
     echo [Unit]
