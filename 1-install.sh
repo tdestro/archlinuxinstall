@@ -38,6 +38,7 @@ grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps xorg-xrandr \
+xf86-video-modesetting, xf86-video-vesa and xf86-video-fbdev \
 xorg-xbacklight xbindkeys xorg-xinput xorg-twm xorg-xclock xterm xdotool \
 xf86-input-libinput \
 lightdm accountsservice \
