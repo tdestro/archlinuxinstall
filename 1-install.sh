@@ -105,7 +105,10 @@ gparted \
 borg \
 nvidia bumblebee primus bbswitch \
 acpid \
-networkmanager
+networkmanager \
+gdk-pixbuf2
+
+
 
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
