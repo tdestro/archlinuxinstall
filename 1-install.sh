@@ -65,7 +65,7 @@ ttf-dejavu ttf-liberation noto-fonts \
 xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps \
 xterm \
-xf86-input-libinput xf86-video-modesetting xf86-video-vesa xf86-video-fbdev \
+xf86-input-libinput xf86-video-vesa xf86-video-fbdev \
 lightdm accountsservice \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
