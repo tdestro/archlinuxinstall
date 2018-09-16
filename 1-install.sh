@@ -106,6 +106,8 @@ exit_on_error $? !!
 cp ./Xresources /mnt/home/tdestro/.Xresources
 exit_on_error $? !!
 
+exit 1
+
 arch-chroot /mnt /bin/bash <<EOF
 # Terminal fonts that make sense on this machine.
 {
