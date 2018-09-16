@@ -103,7 +103,8 @@ xfburn \
 wine \
 gparted \
 borg \
-nvidia bumblebee primus bbswitch
+nvidia bumblebee primus bbswitch \
+acpid
 
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
@@ -229,6 +230,12 @@ systemctl enable netctl-auto@wlp59s0.service
 systemctl enable powertop.service
 systemctl enable bumblebeed.service
 systemctl enable org.cups.cupsd.service
+systemctl enable acpid.service
+
+
+
+
+
 
 # under volt this thing.
 pip install undervolt
