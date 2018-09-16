@@ -36,7 +36,9 @@ mount /dev/nvme0n1p4 /mnt/boot
 exit_on_error $? !!
 pacstrap /mnt base terminus-font f2fs-tools
 exit_on_error $? !!
-rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
+rm /mnt/etc/fstab
+exit_on_error $? !!
+genfstab -U -p /mnt/ >> /mnt/etc/fstab
 exit_on_error $? !!
 rm /mnt/etc/pacman.conf
 exit_on_error $? !!
@@ -58,6 +60,16 @@ exit_on_error $? !!
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
+exit_on_error() {
+    exit_code=$1
+    last_command=${@:2}
+    if [ $exit_code -ne 0 ]; then
+        >&2 echo "\"${last_command}\" command failed with exit code ${exit_code}."
+        exit $exit_code
+    fi
+}
+# enable !! command completion
+set -o history -o histexpand
 
 # Terminal fonts that make sense on this machine.
 {
