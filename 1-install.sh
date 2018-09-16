@@ -14,7 +14,7 @@ exit_on_error() {
 set -o history -o histexpand
 
 mkfs.ext4 -F /dev/nvme0n1p4 && \
-mkswap /dev/nvme0n1p5 && \
+mkswap -f /dev/nvme0n1p5 && \
 swapon /dev/nvme0n1p5 && \
 mkfs.f2fs -f /dev/nvme0n1p6 && \
 mount /dev/nvme0n1p6 /mnt && \
