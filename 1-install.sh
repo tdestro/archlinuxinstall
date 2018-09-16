@@ -58,7 +58,14 @@ exit_on_error $? !!
 #### Configure base system ####
 ###############################
 arch-chroot /mnt /bin/bash <<EOF
-pacman --noconfirm -Sy --needed base-devel \
+
+# Setting and generating locale
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+export LANG=en_US.UTF-8
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+
+pacman --noconfirm -Sy --needed base-devel linux-headers \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
@@ -130,12 +137,6 @@ arch-chroot /mnt /bin/bash <<EOF
 
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
-
-# Setting and generating locale
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-locale-gen
-export LANG=en_US.UTF-8
-echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Configure timezone
 ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime
