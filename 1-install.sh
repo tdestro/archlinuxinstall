@@ -1,22 +1,35 @@
 #!/bin/bash
 echo Tony\'s Arch Linux Installer Script.
-mkfs.ext4 -F /dev/nvme0n1p4
-mkswap /dev/nvme0n1p5
-swapon /dev/nvme0n1p5
-mkfs.f2fs -f /dev/nvme0n1p6
-mount /dev/nvme0n1p6 /mnt
-mkdir /mnt/boot
-mount /dev/nvme0n1p4 /mnt/boot
-pacstrap /mnt base terminus-font f2fs-tools 
-rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab
-rm /mnt/etc/pacman.conf
-cp /etc/pacman.conf /mnt/etc/pacman.conf
-cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
-cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
-cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service
-cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf
-cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
-cp ./cinnamon_settings /mnt/cinnamon_settings
+
+exit_on_error() {
+    exit_code=$1
+    last_command=${@:2}
+    if [ $exit_code -ne 0 ]; then
+        >&2 echo "\"${last_command}\" command failed with exit code ${exit_code}."
+        exit $exit_code
+    fi
+}
+
+# enable !! command completion
+set -o history -o histexpand
+
+mkfs.ext4 -F /dev/nvme0n1p4 && \
+mkswap /dev/nvme0n1p5 && \
+swapon /dev/nvme0n1p5 && \
+mkfs.f2fs -f /dev/nvme0n1p6 && \
+mount /dev/nvme0n1p6 /mnt && \
+mkdir /mnt/boot && \
+mount /dev/nvme0n1p4 /mnt/boot && \
+pacstrap /mnt base terminus-font f2fs-tools && \ 
+rm /mnt/etc/fstab && genfstab -U -p /mnt/ >> /mnt/etc/fstab && \
+rm /mnt/etc/pacman.conf && \
+cp /etc/pacman.conf /mnt/etc/pacman.conf && \
+cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt && \
+cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer && \
+cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service && \
+cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf && \
+cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf && \
+cp ./cinnamon_settings /mnt/cinnamon_settings && \
 
 #xinput set-prop 14 145 2.400000, 0.000000, 0.000000, 0.000000, 2.400000, 0.000000, 0.000000, 0.000000, 1.000000
 
@@ -71,8 +84,8 @@ wine \
 gparted \
 borg \
 nvidia bumblebee primus bbswitch
+exit_on_error $? !!
 
-# powertop
 {
     echo [Unit]
     echo Description=Powertop tunings
@@ -83,7 +96,7 @@ nvidia bumblebee primus bbswitch
     echo 
     echo [Install]
     echo WantedBy=multi-user.target
-} > /etc/systemd/system/powertop.service
+} > /etc/systemd/system/powertop.service 
 
 
 echo "vboxdrv" >> /etc/modules-load.d/virtualbox.conf
