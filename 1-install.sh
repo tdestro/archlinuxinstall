@@ -249,6 +249,10 @@ curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /var/lib/Accounts
 chmod 644 /var/lib/AccountsService/users/tdestro
 chmod 644 /var/lib/AccountsService/icons/tdestro.jpg
 
+# brightness
+{
+SUBSYSTEM=="backlight", ACTION=="add", KERNEL=="acpi_video0", ATTR{brightness}="6"
+} > /etc/udev/rules.d/81-backlight.rules
 
 # gcloud 
 curl https://sdk.cloud.google.com -o ./install-gcloud.sh && \
