@@ -19,7 +19,6 @@ swapoff /dev/nvme0n1p5 || [ $? -eq 1 ]
 umount -l /dev/nvme0n1p5 || [ $? -eq 1 ]
 umount -l /dev/nvme0n1p6 || [ $? -eq 1 ]
 
-
 mkfs.ext4 -F /dev/nvme0n1p4
 exit_on_error $? !!
 mkswap -f /dev/nvme0n1p5
@@ -54,7 +53,6 @@ cp ./cinnamon_settings /mnt/cinnamon_settings
 exit_on_error $? !!
 
 #xinput set-prop 14 145 2.400000, 0.000000, 0.000000, 0.000000, 2.400000, 0.000000, 0.000000, 0.000000, 1.000000
-
 
 ###############################
 #### Configure base system ####
@@ -100,6 +98,13 @@ gparted \
 borg \
 nvidia bumblebee primus bbswitch
 EOF
+
+cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf 
+exit_on_error $? !!
+cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
+exit_on_error $? !!
+cp ./Xresources /mnt/home/tdestro/.Xresources
+exit_on_error $? !!
 
 arch-chroot /mnt /bin/bash <<EOF
 # Terminal fonts that make sense on this machine.
@@ -262,8 +267,4 @@ dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 #pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
 EOF
 
-cp ./30-touchpad.conf /mnt/etc/X11/xorg.conf.d/30-touchpad.conf 
-exit_on_error $? !!
-cp ./10-monitor.conf /mnt/etc/X11/xorg.conf.d/10-monitor.conf
-exit_on_error $? !!
-cp ./Xresources /mnt/home/tdestro/.Xresources
+
