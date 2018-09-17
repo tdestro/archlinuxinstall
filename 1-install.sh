@@ -251,7 +251,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether acroread nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin sqlops' 
 
 # avatar from github for light dm
 curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /var/lib/AccountsService/icons/tdestro.jpg
