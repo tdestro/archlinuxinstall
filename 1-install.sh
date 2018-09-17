@@ -205,6 +205,7 @@ echo 'Defaults !env_editor, editor="/usr/bin/vim:/usr/bin/vi:/usr/bin/nano"' >> 
 echo 'Defaults timestamp_timeout=15' >> /etc/sudoers
 echo 'Defaults passprompt="[sudo] password for %u: "' >> /etc/sudoers
 echo 'Defaults lecture=never' >> /etc/sudoers
+echo 'tdestro ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 git config --global user.name "Tony Destro" && git config --global user.email "tony.destro@gmail.com"
 git config --global credential.helper cache store
 usermod -aG vboxusers tdestro
