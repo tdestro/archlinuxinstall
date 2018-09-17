@@ -89,6 +89,7 @@ meld \
 atom \
 deluge \
 docker \
+vagrant \
 gimp \
 librsvg redshift \
 steam \
