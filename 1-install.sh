@@ -80,7 +80,7 @@ alsa-utils alsa-plugins \
 pulseaudio pulseaudio-alsa qmmp \
 ntfs-3g dosfstools f2fs-tools fuse fuse-exfat autofs mtpfs \
 chromium firefox flashplugin gedit xfce4-terminal \
-cinnamon adwaita-icon-theme variety sushi \
+cinnamon adwaita-icon-theme variety sushi gnome-screenshot \
 go \
 gvim \
 jdk8-openjdk \
