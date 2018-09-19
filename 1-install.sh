@@ -44,6 +44,7 @@ exit_on_error $? !!
 cp /etc/pacman.conf /mnt/etc/pacman.conf
 exit_on_error $? !!
 cp ./wlp59s0-dd-wrt /mnt/etc/netctl/wlp59s0-dd-wrt
+cp ./wlp59s0-LudwigVonMises /mnt/etc/netctl/wlp59s0-LudwigVonMises
 exit_on_error $? !!
 cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer
 exit_on_error $? !!
