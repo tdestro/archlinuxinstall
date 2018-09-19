@@ -96,7 +96,7 @@ librsvg redshift \
 steam \
 vlc \
 virtualbox virtualbox-guest-iso \
-powertop \
+powertop lm_sensors \
 python-pip \
 filezilla libreoffice-fresh \
 cups cups-pdf system-config-printer gutenprint ghostscript gsfonts foomatic-db foomatic-db-engine foomatic-db-nonfree foomatic-db-ppds foomatic-db-nonfree-ppds \
@@ -242,6 +242,7 @@ systemctl enable bumblebeed.service
 systemctl enable org.cups.cupsd.service
 systemctl enable acpid.service
 systemctl disable cinnamon-settings-daemon-smartcard
+systemctl enable lm_sensors
 #systemctl enable NetworkManager.service
 
 
