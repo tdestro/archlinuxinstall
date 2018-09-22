@@ -283,6 +283,8 @@ su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdest
 su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift@marvel4u.zip -o /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip && unzip /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip -d /home/tdestro/.local/share/cinnamon/applets && rm /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip'
 dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 
+echo "10.0.0.200  destromachines.local destromacines" >> /etc/hosts
+
 # Install JLink
 #su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
 #su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
