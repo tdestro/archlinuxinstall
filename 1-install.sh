@@ -71,7 +71,7 @@ xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps \
 xterm \
 xf86-input-libinput xf86-video-vesa xf86-video-fbdev \
-lightdm lightdm-gtk-greeter accountsservice \
+lightdm lightdm-webkit2-greeter accountsservice \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
 alsa-utils alsa-plugins \
@@ -108,7 +108,7 @@ networkmanager \
 gdk-pixbuf2 \
 xscreensaver \
 lib32-libxtst lib32-libpulse lib32-libva lib32-libvdpau lib32-libva \
-code dotnet-sdk dotnet-runtime
+code dotnet-sdk dotnet-runtime xarchiver
 
 
 
@@ -251,7 +251,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides mssql-server jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin sqlops google-talkplugin' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides mssql-server jetbrains-toolbox debtap virtualbox-ext-oracle lightdm-webkit-theme-aether nemo-compare kalu vertex-themes-git cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin google-talkplugin' 
 
 # avatar from github for light dm
 curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /var/lib/AccountsService/icons/tdestro.jpg
