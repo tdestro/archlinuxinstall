@@ -152,16 +152,14 @@ ln -sfn /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc --utc
 
 # Set hostname.
-echo precision5530 > /etc/hostname
+echo spectrex360 > /etc/hostname
 
 # Configure hosts
 echo "" >> /etc/hosts
-echo '127.0.0.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
-echo '::1             precision5530.localdomain localhost precision5530' >> /etc/hosts
-echo '127.0.1.1       precision5530.localdomain localhost precision5530' >> /etc/hosts
+echo '127.0.0.1       spectrex360.localdomain localhost spectrex360' >> /etc/hosts
+echo '::1             spectrex360.localdomain localhost spectrex360' >> /etc/hosts
+echo '127.0.1.1       spectrex360.localdomain localhost spectrex360' >> /etc/hosts
 
-echo "Installing wifi packages"
-pacman --noconfirm -S iw wpa_supplicant dialog wpa_actiond
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
@@ -273,16 +271,8 @@ su tdestro -c 'echo source /opt/google-cloud-sdk/completion.bash.inc >> /home/td
 su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/.profile'
 
 su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdestro/.local/share/cinnamon /home/tdestro/.local/share/cinnamon/applets'
-su tdestro -c 'curl https://cinnamon-spices.linuxmint.com/files/applets/redshift@marvel4u.zip -o /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip && unzip /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip -d /home/tdestro/.local/share/cinnamon/applets && rm /home/tdestro/.local/share/cinnamon/applets/redshift@marvel4u.zip'
 dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 
-echo "10.0.0.200  destromachines.local destromachines" >> /etc/hosts
-
-# Install JLink
-#su tdestro -c 'curl –sS –output /home/tdestro/JLink_Linux_x86_64.deb https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb'
-#su tdestro -c 'debtap -q /home/tdestro/JLink_Linux_x86_64.deb'
-#rm /home/tdestro/JLink_Linux_x86_64.deb
-#pacman -U --noconfirm --needed /home/tdestro/JLink_Linux_x86_64.pkg.tar.xz
 EOF
 
 
