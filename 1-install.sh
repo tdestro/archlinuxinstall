@@ -277,6 +277,7 @@ su tdestro -c 'echo source /opt/google-cloud-sdk/completion.bash.inc >> /home/td
 su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/.profile'
 
 su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdestro/.local/share/cinnamon /home/tdestro/.local/share/cinnamon/applets'
+mkdir -p /org/cinnamon
 dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 
 EOF
