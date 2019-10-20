@@ -43,6 +43,10 @@ rm /mnt/etc/pacman.conf
 exit_on_error $? !!
 cp /etc/pacman.conf /mnt/etc/pacman.conf
 exit_on_error $? !!
+cp ./undervolt.timer /mnt/etc/systemd/system/undervolt.timer	
+exit_on_error $? !!	
+cp ./undervolt.service /mnt/etc/systemd/system/undervolt.service	
+exit_on_error $? !!
 cp ./cinnamon_settings /mnt/cinnamon_settings
 exit_on_error $? !!
 
