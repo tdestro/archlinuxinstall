@@ -278,6 +278,7 @@ su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/
 
 su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdestro/.local/share/cinnamon /home/tdestro/.local/share/cinnamon/applets'
 mkdir -p /org/cinnamon
+touch /org/cinnamon/cinnamon_settings
 dconf load /org/cinnamon/ < /cinnamon_settings && rm /cinnamon_settings
 
 EOF
