@@ -89,7 +89,7 @@ deluge \
 docker \
 vagrant \
 gimp \
-librsvg redshift \
+librsvg \
 steam \
 vlc \
 virtualbox virtualbox-guest-iso \
@@ -102,7 +102,7 @@ xfburn \
 wine \
 gparted \
 borg \
-nvidia bumblebee primus bbswitch \
+nvidia-beta bumblebee primus bbswitch \
 acpid \
 networkmanager \
 gdk-pixbuf2 \
