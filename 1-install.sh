@@ -164,6 +164,8 @@ echo '127.0.0.1       spectrex360.localdomain localhost spectrex360' >> /etc/hos
 echo '::1             spectrex360.localdomain localhost spectrex360' >> /etc/hosts
 echo '127.0.1.1       spectrex360.localdomain localhost spectrex360' >> /etc/hosts
 
+echo "Installing wifi packages"
+pacman --noconfirm -S wireless_tools wpa_supplicant dialog
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
@@ -249,7 +251,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin sqlops google-talkplugin' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides mssql-server jetbrains-toolbox debtap virtualbox-ext-oracle xarchiver-gtk2 lightdm-webkit2-greeter lightdm-webkit-theme-aether nemo-compare kalu vertex-themes-git cinnamon-applet-cpu-temperatur-git cinnamon-applet-hardware-monitor cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin sqlops google-talkplugin' 
 
 # avatar from github for light dm
 curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /var/lib/AccountsService/icons/tdestro.jpg
