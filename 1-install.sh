@@ -71,7 +71,7 @@ xf86-video-intel mesa-libgl libva-intel-driver libva \
 xorg-server xorg-xinit xorg-apps \
 xterm \
 xf86-input-libinput xf86-video-vesa xf86-video-fbdev \
-lightdm accountsservice \
+lightdm lightdm-gtk-greeter accountsservice \
 freetype2 \
 zip unzip unrar p7zip lzop cpio zziplib \
 alsa-utils alsa-plugins \
@@ -102,7 +102,7 @@ xfburn \
 wine \
 gparted \
 borg \
-nvidia-beta bumblebee primus bbswitch \
+nvidia bumblebee primus bbswitch \
 acpid \
 networkmanager \
 gdk-pixbuf2 \
