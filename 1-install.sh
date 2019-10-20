@@ -14,24 +14,24 @@ exit_on_error() {
 set -o history -o histexpand
 
 # ensure drives are unmounted, even if it's stupid.
-umount -l /dev/nvme0n1p4 || [ $? -eq 1 ]
-swapoff /dev/nvme0n1p5 || [ $? -eq 1 ]
 umount -l /dev/nvme0n1p5 || [ $? -eq 1 ]
+swapoff /dev/nvme0n1p6 || [ $? -eq 1 ]
 umount -l /dev/nvme0n1p6 || [ $? -eq 1 ]
+umount -l /dev/nvme0n1p7 || [ $? -eq 1 ]
 
-mkfs.ext4 -F /dev/nvme0n1p4
+mkfs.ext4 -F /dev/nvme0n1p5
 exit_on_error $? !!
-mkswap -f /dev/nvme0n1p5
+mkswap -f /dev/nvme0n1p6
 exit_on_error $? !!
-swapon /dev/nvme0n1p5
+swapon /dev/nvme0n1p6
 exit_on_error $? !!
-mkfs.f2fs -f /dev/nvme0n1p6
+mkfs.f2fs -f /dev/nvme0n1p7
 exit_on_error $? !!
-mount /dev/nvme0n1p6 /mnt
+mount /dev/nvme0n1p7 /mnt
 exit_on_error $? !!
 mkdir /mnt/boot
 exit_on_error $? !!
-mount /dev/nvme0n1p4 /mnt/boot
+mount /dev/nvme0n1p5 /mnt/boot
 exit_on_error $? !!
 pacstrap /mnt base terminus-font f2fs-tools
 exit_on_error $? !!
