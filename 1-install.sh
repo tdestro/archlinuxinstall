@@ -63,7 +63,7 @@ locale-gen
 export LANG=en_US.UTF-8
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
-pacman --noconfirm -Sy --needed base-devel linux-headers \
+pacman --noconfirm -Sy --needed base-devel linux-headers linux-firmware \
 intel-ucode openssh git bash-completion reflector python \
 grub efibootmgr os-prober mtools \
 ttf-dejavu ttf-liberation noto-fonts \
