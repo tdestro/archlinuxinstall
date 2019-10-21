@@ -270,6 +270,8 @@ chmod +x ./install-gcloud.sh && \
 rm ./install-gcloud.sh
 su tdestro -c 'echo source /opt/google-cloud-sdk/completion.bash.inc >> /home/tdestro/.profile'
 su tdestro -c 'echo source /opt/google-cloud-sdk/path.bash.inc >> /home/tdestro/.profile'
+su tdestro -c 'cp /etc/xdg/autostart/nm-applet.desktop ~/.config/autostart/nm-applet.desktop'
+su tdestro -c 'echo X-GNOME-Autostart-enabled=false >> ~/.config/autostart/nm-applet.desktop'
 
 su tdestro -c 'mkdir /home/tdestro/.local /home/tdestro/.local/share /home/tdestro/.local/share/cinnamon /home/tdestro/.local/share/cinnamon/applets'
 mkdir -p /org/cinnamon
