@@ -164,7 +164,7 @@ echo '::1             spectrex360.localdomain localhost spectrex360' >> /etc/hos
 echo '127.0.1.1       spectrex360.localdomain localhost spectrex360' >> /etc/hosts
 
 echo "Installing wifi packages"
-pacman --noconfirm -S iw wpa_supplicant dialog netctl
+pacman --noconfirm -S dhcpcd iw wpa_supplicant dialog netctl
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
@@ -246,7 +246,7 @@ systemctl enable undervolt.timer
 su tdestro -c 'cd ~; git clone https://aur.archlinux.org/yay.git; cd ~/yay; makepkg -sf' 
 pacman -U --noconfirm --needed /home/tdestro/yay/*.pkg.tar.xz
 rm -rf /home/tdestro/yay 
-su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides mssql-server jetbrains-toolbox debtap virtualbox-ext-oracle lightdm-webkit-theme-aether nemo-compare vertex-themes-git cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin google-talkplugin powershell teams-for-linux slack-desktop' 
+su tdestro -c 'echo "baloney1" | yay -S --noconfirm --noprovides mssql-server jetbrains-toolbox debtap virtualbox-ext-oracle lightdm-webkit-theme-aether nemo-compare vertex-themes-git cinnamon-sound-effects jdownloader2 postman-bin simplenote-electron-bin google-talkplugin teams-for-linux powershell slack-desktop' 
 
 # avatar from github for light dm
 curl https://avatars0.githubusercontent.com/u/10113013?s=90 -o /var/lib/AccountsService/icons/tdestro.jpg
