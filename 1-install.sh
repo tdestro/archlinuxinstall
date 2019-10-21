@@ -109,8 +109,6 @@ xscreensaver \
 lib32-libxtst lib32-libpulse lib32-libva lib32-libvdpau lib32-libva \
 code dotnet-sdk dotnet-runtime xarchiver
 
-pacman --noconfirm -U https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v0.7.0/teams-for-linux-0.7.0.pacman
-
 # ADD NEW USER
 useradd -m -g users -G wheel,lp,rfkill,sys,storage,power,audio,disk,input,kvm,video,scanner -s /bin/bash tdestro -c "Tony Destro"
 echo "tdestro:baloney1" | chpasswd
