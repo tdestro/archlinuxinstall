@@ -104,7 +104,6 @@ gparted \
 borg \
 nvidia bumblebee primus bbswitch \
 acpid \
-networkmanager \
 gdk-pixbuf2 \
 xscreensaver \
 lib32-libxtst lib32-libpulse lib32-libva lib32-libvdpau lib32-libva \
