@@ -231,7 +231,6 @@ su tdestro -c 'echo lat=40.4417 >> /home/tdestro/.config/redshift/redshift.conf'
 
 
 systemctl enable lightdm.service
-systemctl enable dhcpcd
 systemctl enable powertop.service
 systemctl enable bumblebeed.service
 systemctl enable org.cups.cupsd.service
