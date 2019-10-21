@@ -165,7 +165,7 @@ echo '::1             spectrex360.localdomain localhost spectrex360' >> /etc/hos
 echo '127.0.1.1       spectrex360.localdomain localhost spectrex360' >> /etc/hosts
 
 echo "Installing wifi packages"
-pacman --noconfirm -S wireless_tools wpa_supplicant dialog netctl
+pacman --noconfirm -S iw wpa_supplicant dialog netctl
 echo "Generating initramfs"
 sed -i 's/^HOOKS.*/HOOKS="base udev autodetect modconf block consolefont encrypt lvm2 filesystems keyboard fsck"/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
