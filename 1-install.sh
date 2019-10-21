@@ -233,16 +233,12 @@ su tdestro -c 'echo lat=40.4417 >> /home/tdestro/.config/redshift/redshift.conf'
 
 systemctl enable lightdm.service
 systemctl enable dhcpcd
-systemctl enable netctl-auto@wlp59s0.service
 systemctl enable powertop.service
 systemctl enable bumblebeed.service
 systemctl enable org.cups.cupsd.service
 systemctl enable acpid.service
 systemctl disable cinnamon-settings-daemon-smartcard
 systemctl enable lm_sensors
-#systemctl enable NetworkManager.service
-
-
 
 # under volt this thing.
 pip install undervolt
