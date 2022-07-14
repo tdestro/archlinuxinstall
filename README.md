@@ -1,1 +1,3 @@
-$ iwctl --passphrase **** station wlan0 connect MurrayRothbard
+iwctl --passphrase **** station wlan0 connect MurrayRothbard
+sudo pacman -Sy git
+git clone
